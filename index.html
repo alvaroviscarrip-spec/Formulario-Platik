@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platik · Formulario de Personalización de tu Carta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Orbitron:wght@700;900&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="Logo/hf_20260601_232616_ef13357e-f4c9-4f0a-b3c9-c2fe090f0ede.png">
+  <link rel="apple-touch-icon" href="Logo/hf_20260601_232616_ef13357e-f4c9-4f0a-b3c9-c2fe090f0ede.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+
+    <header class="masthead">
+      <p class="masthead-kicker">Cartas Digitales Premium</p>
+      <h1 class="masthead-title">PLATIK</h1>
+      <div class="masthead-rule"></div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h2>Formulario de personalización de tu carta digital</h2>
+        <p>
+          ¡Bienvenido/a a Platik! Este formulario nos permite configurar tu carta digital exactamente
+          como la quieres: idiomas, moneda, temática visual, alérgenos, estructura de categorías y mucho más.
+          Tardarás unos 10–15 minutos en completarlo.
+        </p>
+        <p class="intro-note">Los campos marcados con * son obligatorios. El resto, si no aplica a tu restaurante, puedes dejarlo en blanco.</p>
+      </section>
+
+      <form id="platik-form" action="https://formsubmit.co/contacto@platik.es" method="POST" novalidate enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="Nueva personalización de carta — Platik">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div style="position:absolute; left:-9999px;" aria-hidden="true">
+          <label>No rellenar este campo: <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <!-- 01 — DATOS DEL RESTAURANTE -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">01</span>
+            <h3>Datos del restaurante</h3>
+          </header>
+          <p class="section-desc">Información básica de tu establecimiento para configurar la carta.</p>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="nombre-restaurante">Nombre del restaurante *</label>
+              <input type="text" id="nombre-restaurante" name="Nombre del restaurante" required>
+            </div>
+            <div class="field">
+              <label for="tipo-cocina">Tipo de cocina / concepto</label>
+              <input type="text" id="tipo-cocina" name="Tipo de cocina / concepto" placeholder="Ej. mediterránea, fusión asiática, brasa...">
+            </div>
+            <div class="field">
+              <label for="direccion">Dirección completa</label>
+              <input type="text" id="direccion" name="Dirección completa">
+            </div>
+            <div class="field">
+              <label for="ciudad">Ciudad / localidad</label>
+              <input type="text" id="ciudad" name="Ciudad / localidad">
+            </div>
+            <div class="field">
+              <label for="persona-contacto">Persona de contacto *</label>
+              <input type="text" id="persona-contacto" name="Persona de contacto" required>
+            </div>
+            <div class="field">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="Teléfono" required>
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="Email" required>
+            </div>
+            <div class="field">
+              <label for="web">Página web</label>
+              <input type="url" id="web" name="Página web" placeholder="https://...">
+            </div>
+            <div class="field">
+              <label for="instagram">Instagram</label>
+              <input type="text" id="instagram" name="Instagram" placeholder="@usuario">
+            </div>
+            <div class="field">
+              <label for="tiktok">TikTok</label>
+              <input type="text" id="tiktok" name="TikTok" placeholder="@usuario">
+            </div>
+            <div class="field">
+              <label for="ticket-medio">Ticket medio por persona (€)</label>
+              <input type="number" id="ticket-medio" name="Ticket medio por persona (€)" min="0" step="0.5">
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h4>Logo del restaurante</h4>
+            <div class="radio-list">
+              <label class="radio-item">
+                <input type="radio" name="Logo del restaurante" value="Sí, alta resolución (PNG/SVG) — lo envío por email a contacto@platik.es">
+                <span>Sí, tengo logo en alta resolución (PNG/SVG) — lo envío por email a contacto@platik.es</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="Logo del restaurante" value="Sí, baja resolución — necesito mejora">
+                <span>Sí, tengo logo en baja resolución — necesito mejora</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="Logo del restaurante" value="No tengo logo — solicito diseño de logotipo">
+                <span>No tengo logo — solicito diseño de logotipo</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="Logo del restaurante" value="No quiero logo en la carta">
+                <span>No quiero logo en la carta</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 — IDIOMAS DE LA CARTA -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">02</span>
+            <h3>Idiomas de la carta</h3>
+          </header>
+          <p class="section-desc">La carta puede mostrarse en varios idiomas. El cliente final elige su idioma al abrir la carta.</p>
+
+          <div class="checkbox-grid">
+            <span class="check-item check-item--locked">✓ Español (incluido siempre)</span>
+            <label class="check-item"><input type="checkbox" name="Idioma: Inglés" value="Sí"><span>Inglés</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Francés" value="Sí"><span>Francés</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Alemán" value="Sí"><span>Alemán</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Italiano" value="Sí"><span>Italiano</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Portugués" value="Sí"><span>Portugués</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Árabe" value="Sí"><span>Árabe</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Chino (Simplificado)" value="Sí"><span>Chino (Simplificado)</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Japonés" value="Sí"><span>Japonés</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Ruso" value="Sí"><span>Ruso</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Neerlandés" value="Sí"><span>Neerlandés</span></label>
+            <label class="check-item"><input type="checkbox" name="Idioma: Catalán" value="Sí"><span>Catalán</span></label>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="otros-idiomas">Otros idiomas no listados</label>
+              <input type="text" id="otros-idiomas" name="Otros idiomas no listados">
+            </div>
+            <div class="field">
+              <label for="idioma-defecto">Idioma por defecto al abrir la carta</label>
+              <input type="text" id="idioma-defecto" name="Idioma por defecto al abrir la carta" placeholder="Ej. Español">
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 — MONEDA -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">03</span>
+            <h3>Moneda</h3>
+          </header>
+          <p class="section-desc">Puedes seleccionar una o varias monedas (hasta todas las disponibles).</p>
+
+          <div class="checkbox-grid">
+            <label class="check-item"><input type="checkbox" name="Moneda: Euro (€)" value="Sí"><span>Euro (€)</span></label>
+            <label class="check-item"><input type="checkbox" name="Moneda: Libra esterlina (£)" value="Sí"><span>Libra esterlina (£)</span></label>
+            <label class="check-item"><input type="checkbox" name="Moneda: Dólar estadounidense ($)" value="Sí"><span>Dólar estadounidense ($)</span></label>
+            <label class="check-item"><input type="checkbox" name="Moneda: Dólar canadiense (CAD)" value="Sí"><span>Dólar canadiense (CAD)</span></label>
+            <label class="check-item"><input type="checkbox" name="Moneda: Franco suizo (CHF)" value="Sí"><span>Franco suizo (CHF)</span></label>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="otra-moneda">Otra moneda (especificar)</label>
+              <input type="text" id="otra-moneda" name="Otra moneda (especificar)">
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 — DISEÑO VISUAL DE LA CARTA -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">04</span>
+            <h3>Diseño visual de la carta</h3>
+          </header>
+          <p class="section-desc">Personaliza el aspecto de tu carta eligiendo la temática de color y el fondo de ambiente.</p>
+
+          <div class="subsection">
+            <h4>Temática de carta</h4>
+            <p class="section-desc" style="padding: 0 0 12px;">Selecciona la temática que más encaje con tu restaurante — solo puedes elegir una. Nos servirá de referencia para diseñar tu carta.</p>
+            <div class="theme-grid">
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3730.jpg" alt="01 · Negro &amp; Blanco" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="01 · Negro &amp; Blanco">
+                  <span class="theme-name">01 · Negro &amp; Blanco</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3731.jpg" alt="02 · Blanco &amp; Negro" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="02 · Blanco &amp; Negro">
+                  <span class="theme-name">02 · Blanco &amp; Negro</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3732.jpg" alt="03 · Marino &amp; Naranja" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="03 · Marino &amp; Naranja">
+                  <span class="theme-name">03 · Marino &amp; Naranja</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3733.jpg" alt="04 · Vino Tinto" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="04 · Vino Tinto">
+                  <span class="theme-name">04 · Vino Tinto</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3734.jpg" alt="05 · Marfil &amp; Vino" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="05 · Marfil &amp; Vino">
+                  <span class="theme-name">05 · Marfil &amp; Vino</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3735.jpg" alt="06 · Verde Oliva" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="06 · Verde Oliva">
+                  <span class="theme-name">06 · Verde Oliva</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3736.jpg" alt="07 · Marino &amp; Dorado" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="07 · Marino &amp; Dorado">
+                  <span class="theme-name">07 · Marino &amp; Dorado</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3737.jpg" alt="08 · Negro &amp; Dorado" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="08 · Negro &amp; Dorado">
+                  <span class="theme-name">08 · Negro &amp; Dorado</span>
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Tem%C3%A1ticas/IMG_3738.jpg" alt="09 · Oliva &amp; Dorado" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Temática visual" value="09 · Oliva &amp; Dorado">
+                  <span class="theme-name">09 · Oliva &amp; Dorado</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h4>Fondo de carta</h4>
+            <p class="section-desc" style="padding: 0 0 12px;">Selecciona el fondo de ambiente que mejor transmita el espíritu de tu restaurante — solo puedes elegir uno.</p>
+            <div class="fondo-grid">
+              <label class="theme-card theme-card--image">
+                <img src="Fondo%20de%20carta/Bar%20la%20malul%20apei.png" alt="" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Bar la malul apei">
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Fondo%20de%20carta/Sunset%20Dining.jfif" alt="" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Sunset Dining">
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Fondo%20de%20carta/descarga%20(35).jfif" alt="" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Fondo 03">
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Fondo%20de%20carta/descarga%20(36).jfif" alt="" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Fondo 04">
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Fondo%20de%20carta/descarga%20(37).jfif" alt="" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Fondo 05">
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Fondo%20de%20carta/descarga%20(38)%20-%20copia.png" alt="" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Fondo 06">
+                </div>
+              </label>
+              <label class="theme-card theme-card--image">
+                <img src="Fondo%20de%20carta/dinner%20with%20a%20view.png" alt="" loading="lazy">
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Dinner with a view">
+                </div>
+              </label>
+              <label class="theme-card fondo-card--none">
+                <div class="fondo-none-content">
+                  <span class="fondo-none-icon">∅</span>
+                  <span class="fondo-none-label">Sin fondo de carta</span>
+                </div>
+                <div class="theme-footer">
+                  <input type="radio" name="Fondo de carta" value="Sin fondo de carta">
+                </div>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 05 — FONDOS Y SUPERFICIES -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">05</span>
+            <h3>Fondos y superficies disponibles</h3>
+          </header>
+          <p class="section-desc">Referencia visual de todos los fondos disponibles. Tu asesor Platik los combinará según la temática elegida. Ordenados de más oscuro a más claro.</p>
+
+          <div class="subsection">
+            <h4>Platos llanos</h4>
+            <div class="emplatado-grid">
+              <div class="emplatado-item"><img src="Emplatados/hf_20260610_183643_2a0e1a61-d471-4d70-a2eb-4f0f52763db3.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121344_9d1043b0-6367-4bfc-b071-b2d1c713b13d.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153120_df7f4b07-b511-46f0-93c1-a294353376ad.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122113_e4206e02-4a44-4a01-894b-360875f66f64.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122723_19b484ca-c8f6-483a-94ea-9443f6a36ef6.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121548_ed270bba-5bde-4729-a3f8-a6be768ac7db.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122546_a189f64d-1c88-4f32-aefa-b91e9d10edc9.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260610_183632_9de5f440-0b38-4170-82d6-184211d7d7a7.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121340_c5bfe723-b69f-42cc-8bdf-db52aad66f55.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122227_a473ce94-415b-4109-8ea5-8ba5095f465d.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122400_daa421de-f8da-4f9c-95e7-84b66392ec40.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121908_7c566c88-c13c-4a99-a6f6-b8277e197615.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122535_115b6d3d-d2b6-4460-b165-0cb1f21a4851.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122059_d994ef9c-7399-4765-aad9-283d25596c24.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122539_93643f14-9cc8-45b8-a984-e79742d4c16f.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121912_6c699960-da49-42e3-8716-9627f0a48bfc.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122104_14ecd42c-a8b3-44e2-90c0-aa246a21c7b5.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122234_674f359a-9951-487f-8267-ebce96bc717d.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122715_7e56e9e1-cd08-4ba5-9937-4bf7c1df3e23.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153305_ec191595-15b6-42a2-b858-20b27c176e52.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153523_06f70a1b-73f6-404f-841c-04063a7d7490.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121337_0ac3a52c-73fe-45fb-ba1a-06b20d3be8e7.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260610_183621_caef8043-6523-45aa-b49f-0c8969bde684.png" alt="" loading="lazy"></div>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h4>Platos hondos</h4>
+            <div class="emplatado-grid">
+              <div class="emplatado-item"><img src="Emplatados/hf_20260610_183612_f3714119-a683-4832-8ddc-e4bdc7988670.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153138_2230c7b3-5aa6-4787-9102-9e0420b65e05.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122718_394f301a-f7ea-48b5-b5c8-dc7bc8a7e881.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122239_39f1552c-2061-4160-8473-7d3dee9b8460.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121538_2d42ea10-7f5d-4e15-becc-0dd56d9d9b93.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122109_9a9f72d0-abb6-4633-a54a-482726bd3146.png" alt="" loading="lazy"></div>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h4>Boles y tablas</h4>
+            <div class="emplatado-grid">
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121331_3c1a776a-3c08-4f8b-b59e-63ef9a496be7.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121554_ebf7beed-cf1e-450e-be5e-7d84824d6243.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153129_67a9c1d0-56d0-4845-a126-d46f107a46a4.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121545_f9070d16-9bc9-48d1-ac6a-a021f0c425bc.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122245_48f311b0-b876-4f96-b758-0899d6419478.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122542_b4f4038b-6266-4fda-a145-cf55604f3390.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153321_ed945cff-e1aa-47fb-a96e-d992ed500ea8.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153528_87455f45-17de-4ec0-82f1-14c4125f4d23.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121916_cebe25d2-ab37-4494-b30a-e5c2fea9c315.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122355_3acb92c5-37d6-4790-9dd7-acbe62bc8218.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_121905_e69c46e4-4a32-486f-9e60-8dfef11537dd.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_122409_7d9fc136-48b8-4bd1-b203-32af69aaac12.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153148_4dd1dd07-3939-4db9-8a6b-919991f14eca.png" alt="" loading="lazy"></div>
+              <div class="emplatado-item"><img src="Emplatados/hf_20260611_153257_997c75ca-2785-4ff3-a91d-6878539e4444.png" alt="" loading="lazy"></div>
+            </div>
+          </div>
+
+          <div class="subsection" id="emplatado-otro-section" style="display:none;">
+            <h4>Emplatado personalizado</h4>
+            <div class="emplatado-grid">
+              <div class="emplatado-item emplatado-item--otro" id="emplatado-otro">
+                <div class="emplatado-otro-inner">
+                  <span class="emplatado-otro-icon">+</span>
+                  <span class="emplatado-otro-text">Otro</span>
+                </div>
+              </div>
+            </div>
+            <div id="emplatado-otro-desc-wrap" class="field hidden" style="margin-top: 12px;">
+              <label>Describe el emplatado deseado</label>
+              <textarea id="emplatado-otro-desc" rows="2" style="min-height:auto;" placeholder="Ej: Pizarra negra rectangular, bol de cerámica rústica…"></textarea>
+            </div>
+          </div>
+
+          <div class="subsection" id="platos-section">
+            <h4>Platos de la carta</h4>
+
+            <div class="carta-mode-bar">
+              <label class="carta-mode-btn">
+                <input type="radio" name="carta-mode" value="plato-a-plato" id="mode-plato" checked>
+                <span>Plato a plato</span>
+              </label>
+              <label class="carta-mode-btn">
+                <input type="radio" name="carta-mode" value="subir-carta" id="mode-subir">
+                <span>Subir carta</span>
+              </label>
+            </div>
+
+            <div id="panel-plato-a-plato">
+              <p class="section-desc" style="padding: 0 0 16px;">Añade cada plato indicando nombre, descripción, categoría y el número de emplatado elegido arriba. Puedes editar cualquier plato después de añadirlo.</p>
+
+              <div id="dish-list" class="dish-list"></div>
+
+              <div class="dish-form" id="dish-form">
+                <div class="dish-form-header">
+                  <span id="dish-form-label">+ Nuevo plato</span>
+                </div>
+                <div class="dish-form-body">
+                  <div class="field-grid">
+                    <div class="field" style="grid-column: 1 / -1;">
+                      <label>Nombre del plato</label>
+                      <input type="text" id="df-nombre" placeholder="Ej: Tataki de atún con aguacate">
+                    </div>
+                    <div class="field" style="grid-column: 1 / -1;">
+                      <label>Descripción</label>
+                      <textarea id="df-desc" rows="3" placeholder="Ingredientes, elaboración, alérgenos destacados…"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>Categoría</label>
+                      <select id="df-cat">
+                        <option value="">— Selecciona categoría —</option>
+                        <option>Aperitivo</option>
+                        <option>Entrante</option>
+                        <option>Ensalada</option>
+                        <option>Sopa / Crema</option>
+                        <option>Tapa / Ración</option>
+                        <option>Media ración</option>
+                        <option>Primer plato</option>
+                        <option>Pasta / Arroz</option>
+                        <option>Pescado</option>
+                        <option>Carne</option>
+                        <option>Plato principal</option>
+                        <option>Segundo plato</option>
+                        <option>Postre</option>
+                        <option>Café e infusión</option>
+                        <option>Menú del día</option>
+                        <option>Recomendación del chef</option>
+                        <option>Especial de temporada</option>
+                        <option>Personalizado</option>
+                      </select>
+                    </div>
+                    <div class="field" id="df-cat-custom-wrap" style="display:none">
+                      <label>Nombre de tu categoría</label>
+                      <input type="text" id="df-cat-custom" placeholder="Ej: Degustación, Para compartir…">
+                    </div>
+                    <div class="field">
+                      <label>Nº de emplatado <span style="font-weight:400;opacity:0.6;text-transform:none;letter-spacing:0;">(mirar catálogo superior)</span></label>
+                      <input type="text" id="df-emplatado" placeholder="Ej: 07" maxlength="3">
+                      <label class="check-item" style="margin-top: 8px;">
+                        <input type="checkbox" id="df-emplatado-custom-check">
+                        <span style="font-size:0.78rem;text-transform:none;letter-spacing:0;font-weight:400;">Emplatado personalizado</span>
+                      </label>
+                    </div>
+                    <div class="field" id="df-emplatado-custom-wrap" style="display:none; grid-column: 1 / -1;">
+                      <label>Descripción del emplatado personalizado</label>
+                      <textarea id="df-emplatado-custom" rows="2" style="min-height:auto;" placeholder="Ej: Pizarra negra rectangular, bol de cerámica rústica…"></textarea>
+                    </div>
+                    <div class="field" style="grid-column: 1 / -1;">
+                      <label>Vídeo del plato</label>
+                      <div class="dish-video-toggle">
+                        <label class="radio-item"><input type="radio" name="df-video" id="df-video-no" value="no" checked><span>No</span></label>
+                        <label class="radio-item"><input type="radio" name="df-video" id="df-video-si" value="si"><span>Sí</span></label>
+                      </div>
+                    </div>
+                    <div class="field" id="df-video-desc-wrap" style="display:none; grid-column: 1 / -1;">
+                      <label>Descripción del vídeo <span style="font-weight:400;opacity:0.6;text-transform:none;letter-spacing:0;">(opcional — indica qué debe mostrar o si ya tienes el archivo)</span></label>
+                      <textarea id="df-video-desc" rows="2" placeholder="Ej: Plano cenital del emplatado, traveling de la cocina abierta…"></textarea>
+                    </div>
+                  </div>
+                  <div class="dish-form-actions">
+                    <button type="button" class="btn-add-dish" id="btn-add-dish">Añadir plato</button>
+                    <button type="button" class="btn-cancel-dish hidden" id="btn-cancel-dish">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+
+              <textarea name="Platos de la carta" id="platos-data" style="display:none" aria-hidden="true"></textarea>
+            </div>
+
+            <div id="panel-subir-carta" class="hidden">
+              <div class="upload-notice">
+                <p>Selecciona los emplatados del catálogo de arriba <strong>en el mismo orden</strong> en que aparecen los platos en tu carta. El primer emplatado que marques corresponde al primer plato, el segundo al segundo, y así sucesivamente.</p>
+              </div>
+              <div class="field upload-field">
+                <label>Archivo de carta <span style="font-weight:400;opacity:0.6;text-transform:none;letter-spacing:0;">(PDF, Word, imagen...)</span></label>
+                <input type="file" name="Archivo de carta" id="carta-file-input" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.txt" disabled>
+              </div>
+              <textarea name="Emplatados seleccionados (en orden)" id="emplatados-order-data" style="display:none" aria-hidden="true" disabled></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- 06 — PERFILES DIETÉTICOS -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">06</span>
+            <h3>Perfiles dietéticos</h3>
+          </header>
+          <p class="section-desc">Selecciona los perfiles que quieres destacar en la carta.</p>
+
+          <div class="checkbox-grid">
+            <label class="check-item"><input type="checkbox" name="Perfil: Vegetariano" value="Sí"><span>Vegetariano (sin carne ni pescado)</span></label>
+            <label class="check-item"><input type="checkbox" name="Perfil: Vegano" value="Sí"><span>Vegano (sin productos de origen animal)</span></label>
+            <label class="check-item"><input type="checkbox" name="Perfil: Sin Gluten" value="Sí"><span>Sin Gluten (apto para celíacos)</span></label>
+            <label class="check-item"><input type="checkbox" name="Perfil: Halal" value="Sí"><span>Halal</span></label>
+            <label class="check-item"><input type="checkbox" name="Perfil: Kosher" value="Sí"><span>Kosher</span></label>
+            <label class="check-item"><input type="checkbox" name="Perfil: Sin Lactosa" value="Sí"><span>Sin Lactosa</span></label>
+            <label class="check-item"><input type="checkbox" name="Perfil: Apto Diabéticos" value="Sí"><span>Apto Diabéticos</span></label>
+          </div>
+        </section>
+
+        <!-- 07 — EXTRAS Y OPCIONES AVANZADAS -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">07</span>
+            <h3>Extras y opciones avanzadas</h3>
+          </header>
+          <div class="checkbox-grid">
+            <label class="check-item"><input type="checkbox" name="Extra: Soporte acrílico con QR a medida" value="Sí"><span>Soporte acrílico con QR a medida — precio por decidir</span></label>
+          </div>
+        </section>
+
+        <!-- 08 — OBSERVACIONES -->
+        <section class="form-section">
+          <header class="section-header">
+            <span class="section-number">08</span>
+            <h3>Observaciones y notas adicionales</h3>
+          </header>
+          <p class="section-desc">Cualquier petición especial, referencia visual, restricción o detalle importante que no haya quedado recogido arriba.</p>
+          <div class="field-grid">
+            <div class="field" style="grid-column: 1 / -1;">
+              <textarea name="Observaciones y notas adicionales" rows="5" aria-label="Observaciones y notas adicionales"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <div class="submit-row">
+          <button type="submit" id="submit-btn">Enviar formulario</button>
+          <p id="form-error" class="form-error hidden"></p>
+        </div>
+      </form>
+
+      <div id="thank-you" class="thank-you hidden">
+        <h2>¡Gracias!</h2>
+        <p>Hemos recibido tu formulario correctamente. Nuestro equipo lo revisará y se pondrá en contacto contigo para los siguientes pasos.</p>
+        <p class="thank-you-sub">Si tienes el logo en alta resolución u otros archivos, puedes enviarlos directamente a <a href="mailto:contacto@platik.es">contacto@platik.es</a>.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>platik.es</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
