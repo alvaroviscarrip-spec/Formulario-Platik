@@ -21,6 +21,32 @@
     </header>
 
     <main>
+      <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-header">
+          <span class="progress-title">Tu progreso</span>
+          <span class="progress-pct" id="progress-pct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+          <div class="progress-cp" style="left:25%">
+            <div class="progress-dot" id="cp-dot-1"></div>
+            <span class="progress-label">Datos básicos</span>
+          </div>
+          <div class="progress-cp" style="left:50%">
+            <div class="progress-dot" id="cp-dot-2"></div>
+            <span class="progress-label">Diseño</span>
+          </div>
+          <div class="progress-cp" style="left:75%">
+            <div class="progress-dot" id="cp-dot-3"></div>
+            <span class="progress-label">Carta</span>
+          </div>
+          <div class="progress-cp" style="left:100%">
+            <div class="progress-dot" id="cp-dot-4"></div>
+            <span class="progress-label">Extras</span>
+          </div>
+        </div>
+      </div>
+
       <section class="intro">
         <h2>Formulario de personalización de tu carta digital</h2>
         <p>
@@ -319,7 +345,13 @@
             <span class="section-number">05</span>
             <h3>Fondos y superficies disponibles</h3>
           </header>
-          <p class="section-desc">Referencia visual de todos los fondos disponibles. Tu asesor Platik los combinará según la temática elegida. Ordenados de más oscuro a más claro.</p>
+          <button type="button" class="catalogo-toggle" id="catalogo-toggle">
+            <span id="catalogo-toggle-text">Ver catálogo de emplatados</span>
+            <span class="catalogo-toggle-arrow" id="catalogo-toggle-arrow">▾</span>
+          </button>
+
+          <div id="catalogo-emplatados" class="catalogo-body hidden">
+          <p class="section-desc" style="padding-top:14px;">Referencia visual de todos los fondos disponibles. Tu asesor Platik los combinará según la temática elegida. Ordenados de más oscuro a más claro.</p>
 
           <div class="subsection">
             <h4>Platos llanos</h4>
@@ -381,6 +413,8 @@
               <div class="emplatado-item"><img src="Emplatados/hf_20260611_153257_997c75ca-2785-4ff3-a91d-6878539e4444.png" alt="" loading="lazy"></div>
             </div>
           </div>
+
+          </div><!-- /catalogo-emplatados -->
 
           <div class="subsection" id="emplatado-otro-section" style="display:none;">
             <h4>Emplatado personalizado</h4>
@@ -494,12 +528,20 @@
             </div>
 
             <div id="panel-subir-carta" class="hidden">
-              <div class="upload-notice">
-                <p>Selecciona los emplatados del catálogo de arriba <strong>en el mismo orden</strong> en que aparecen los platos en tu carta. El primer emplatado que marques corresponde al primer plato, el segundo al segundo, y así sucesivamente.</p>
-              </div>
               <div class="field upload-field">
                 <label>Archivo de carta <span style="font-weight:400;opacity:0.6;text-transform:none;letter-spacing:0;">(PDF, Word, imagen...)</span></label>
                 <input type="file" name="Archivo de carta" id="carta-file-input" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.txt" disabled>
+              </div>
+              <div class="emplatado-auto-notice">
+                <span class="emplatado-auto-icon">✦</span>
+                <p>Nuestro equipo seleccionará los emplatados más adecuados para cada plato de tu carta.</p>
+              </div>
+              <label class="avanzada-row">
+                <input type="checkbox" id="avanzada-check">
+                <span class="avanzada-label">Personalización avanzada — quiero elegir los emplatados yo mismo</span>
+              </label>
+              <div id="avanzada-notice" class="upload-notice hidden">
+                <p>Abre el catálogo de arriba y selecciona los emplatados <strong>en el mismo orden</strong> en que aparecen los platos en tu carta.</p>
               </div>
               <textarea name="Emplatados seleccionados (en orden)" id="emplatados-order-data" style="display:none" aria-hidden="true" disabled></textarea>
             </div>

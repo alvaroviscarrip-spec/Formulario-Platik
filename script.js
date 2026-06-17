@@ -4,6 +4,55 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorBox = document.getElementById('form-error');
   const thankYou = document.getElementById('thank-you');
 
+  // --- Barra de progreso ---
+  const progressFill = document.getElementById('progress-fill');
+  const progressPct  = document.getElementById('progress-pct');
+
+  function calcProgress() {
+    let score = 0;
+
+    // Datos básicos (25 pts) — secciones 01, 02, 03
+    if (form.querySelector('#nombre-restaurante').value.trim())   score += 7;
+    if (form.querySelector('#persona-contacto').value.trim())     score += 6;
+    if (form.querySelector('#telefono').value.trim())             score += 6;
+    if (form.querySelector('#email').value.trim())                score += 6;
+
+    // Diseño (25 pts) — sección 04
+    if (form.querySelector('input[name="Temática visual"]:checked'))  score += 13;
+    if (form.querySelector('input[name="Fondo de carta"]:checked'))   score += 12;
+
+    // Carta (25 pts) — sección 05
+    const enModoSubir = document.getElementById('mode-subir')?.checked;
+    if (enModoSubir) {
+      const fileInput = document.getElementById('carta-file-input');
+      if (fileInput?.files?.length)      score += 13;
+      if (typeof emplatadoSels !== 'undefined' && emplatadoSels.length) score += 12;
+    } else {
+      if (typeof dishes !== 'undefined' && dishes.length) score += 25;
+    }
+
+    // Extras (25 pts) — secciones 06, 07, 08
+    if (form.querySelectorAll('input[name^="Perfil:"]:checked').length)  score += 10;
+    if (form.querySelectorAll('input[name^="Extra:"]:checked').length)   score += 5;
+    const obs = form.querySelector('textarea[name="Observaciones y notas adicionales"]');
+    if (obs?.value.trim()) score += 10;
+
+    return Math.min(score, 100);
+  }
+
+  function updateProgress() {
+    const pct = calcProgress();
+    progressFill.style.width = pct + '%';
+    progressPct.textContent  = pct + '%';
+    [25, 50, 75, 100].forEach((threshold, i) => {
+      document.getElementById(`cp-dot-${i + 1}`)
+        ?.classList.toggle('reached', pct >= threshold);
+    });
+  }
+
+  form.addEventListener('input',  updateProgress);
+  form.addEventListener('change', updateProgress);
+
   // --- Bloquear envío con Enter (solo el botón final lo permite) ---
   form.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
@@ -39,6 +88,28 @@ document.addEventListener('DOMContentLoaded', () => {
     badge.className = 'emplatado-num';
     badge.textContent = String(i + 1).padStart(2, '0');
     item.appendChild(badge);
+  });
+
+  // --- Catálogo de emplatados: toggle ---
+  const catalogoToggle = document.getElementById('catalogo-toggle');
+  const catalogoBody   = document.getElementById('catalogo-emplatados');
+  const catalogoArrow  = document.getElementById('catalogo-toggle-arrow');
+  const catalogoText   = document.getElementById('catalogo-toggle-text');
+
+  function openCatalogo() {
+    catalogoBody.classList.remove('hidden');
+    catalogoArrow.classList.add('open');
+    catalogoText.textContent = 'Ocultar catálogo de emplatados';
+  }
+
+  function closeCatalogo() {
+    catalogoBody.classList.add('hidden');
+    catalogoArrow.classList.remove('open');
+    catalogoText.textContent = 'Ver catálogo de emplatados';
+  }
+
+  catalogoToggle.addEventListener('click', () => {
+    catalogoBody.classList.contains('hidden') ? openCatalogo() : closeCatalogo();
   });
 
   // --- Modo carta: plato a plato / subir carta ---
@@ -101,16 +172,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isOtro) otraDescWrap.classList.remove('hidden');
         refreshOrderBadges();
       }
+      updateProgress();
     });
   });
 
   otraDescInput && otraDescInput.addEventListener('input', syncOrderData);
 
+  const avanzadaCheck  = document.getElementById('avanzada-check');
+  const avanzadaNotice = document.getElementById('avanzada-notice');
+
+  function clearEmplatadoSels() {
+    emplatadoSels.forEach(s => {
+      s.item.classList.remove('is-selected-emplatado');
+      const badge = s.item.querySelector('.emplatado-order');
+      if (badge) badge.remove();
+    });
+    emplatadoSels = [];
+    otraDescWrap.classList.add('hidden');
+    syncOrderData();
+  }
+
   function activateSubirMode() {
     panelPlato.classList.add('hidden');
     panelSubir.classList.remove('hidden');
-    otraSection.style.display = '';
-    section05.classList.add('emplatados-selectable');
+    otraSection.style.display = 'none';
+    section05.classList.remove('emplatados-selectable');
     cartaFileInput.disabled = false;
     orderData.disabled = false;
   }
@@ -120,16 +206,28 @@ document.addEventListener('DOMContentLoaded', () => {
     panelPlato.classList.remove('hidden');
     otraSection.style.display = 'none';
     section05.classList.remove('emplatados-selectable');
-    emplatadoSels.forEach(s => {
-      s.item.classList.remove('is-selected-emplatado');
-      const badge = s.item.querySelector('.emplatado-order');
-      if (badge) badge.remove();
-    });
-    emplatadoSels = [];
-    otraDescWrap.classList.add('hidden');
+    clearEmplatadoSels();
+    avanzadaCheck.checked = false;
+    avanzadaNotice.classList.add('hidden');
+    closeCatalogo();
     cartaFileInput.disabled = true;
     orderData.disabled = true;
   }
+
+  avanzadaCheck && avanzadaCheck.addEventListener('change', () => {
+    if (avanzadaCheck.checked) {
+      otraSection.style.display = '';
+      section05.classList.add('emplatados-selectable');
+      avanzadaNotice.classList.remove('hidden');
+      openCatalogo();
+    } else {
+      otraSection.style.display = 'none';
+      section05.classList.remove('emplatados-selectable');
+      avanzadaNotice.classList.add('hidden');
+      clearEmplatadoSels();
+      closeCatalogo();
+    }
+  });
 
   modePlato && modePlato.addEventListener('change', activatePlatoMode);
   modeSubir && modeSubir.addEventListener('change', activateSubirMode);
@@ -227,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     syncPlatosData();
+    updateProgress();
   }
 
   function clearForm() {
