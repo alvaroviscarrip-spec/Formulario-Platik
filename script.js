@@ -11,12 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const TOTAL_STEPS = 6;
 
   function updateStepProgress(step) {
-    const pct = (step - 1) / TOTAL_STEPS * 100;
+    const pct = step / TOTAL_STEPS * 100;
     progressFill.style.width = pct + '%';
     progressStep.textContent = `Paso ${step} de ${TOTAL_STEPS}`;
-    for (let i = 1; i <= TOTAL_STEPS; i++) {
-      document.getElementById(`cp-dot-${i}`)?.classList.toggle('reached', step > i);
-    }
   }
 
   // --- Navegación por pasos ---
@@ -469,9 +466,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Marcar progreso completo y mostrar thank-you
       progressFill.style.width = '100%';
-      [1, 2, 3, 4, 5, 6].forEach(i =>
-        document.getElementById(`cp-dot-${i}`)?.classList.add('reached')
-      );
       progressStep.textContent = '¡Enviado!';
 
       form.classList.add('hidden');
