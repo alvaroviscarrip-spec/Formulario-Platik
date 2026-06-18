@@ -46,21 +46,29 @@
         </div>
         <div class="progress-track">
           <div class="progress-fill" id="progress-fill"></div>
-          <div class="progress-cp" style="left:25%">
+          <div class="progress-cp" style="left:16.67%">
             <div class="progress-dot" id="cp-dot-1"></div>
-            <span class="progress-label">Datos básicos</span>
+            <span class="progress-label">Datos</span>
           </div>
-          <div class="progress-cp" style="left:50%">
+          <div class="progress-cp" style="left:33.33%">
             <div class="progress-dot" id="cp-dot-2"></div>
             <span class="progress-label">Diseño</span>
           </div>
-          <div class="progress-cp" style="left:75%">
+          <div class="progress-cp" style="left:50%">
             <div class="progress-dot" id="cp-dot-3"></div>
             <span class="progress-label">Carta</span>
           </div>
-          <div class="progress-cp" style="left:100%">
+          <div class="progress-cp" style="left:66.67%">
             <div class="progress-dot" id="cp-dot-4"></div>
+            <span class="progress-label">Perfiles</span>
+          </div>
+          <div class="progress-cp" style="left:83.33%">
+            <div class="progress-dot" id="cp-dot-5"></div>
             <span class="progress-label">Extras</span>
+          </div>
+          <div class="progress-cp" style="left:100%">
+            <div class="progress-dot" id="cp-dot-6"></div>
+            <span class="progress-label">Notas</span>
           </div>
         </div>
       </div>
@@ -166,104 +174,13 @@
 
 
         <!-- ══════════════════════════════════════
-             PASO 2 — Idiomas de la carta
+             PASO 2 — Diseño visual
              ══════════════════════════════════════ -->
         <div class="form-step hidden" id="step-2">
 
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">02</span>
-              <h3>Idiomas de la carta</h3>
-            </header>
-            <p class="section-desc">La carta puede mostrarse en varios idiomas. El cliente final elige su idioma al abrir la carta.</p>
-
-            <div class="checkbox-grid">
-              <span class="check-item check-item--locked">✓ Español (incluido siempre)</span>
-              <label class="check-item"><input type="checkbox" name="Idioma: Inglés" value="Sí"><span>Inglés</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Francés" value="Sí"><span>Francés</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Alemán" value="Sí"><span>Alemán</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Italiano" value="Sí"><span>Italiano</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Portugués" value="Sí"><span>Portugués</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Árabe" value="Sí"><span>Árabe</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Chino (Simplificado)" value="Sí"><span>Chino (Simplificado)</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Japonés" value="Sí"><span>Japonés</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Ruso" value="Sí"><span>Ruso</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Neerlandés" value="Sí"><span>Neerlandés</span></label>
-              <label class="check-item"><input type="checkbox" name="Idioma: Catalán" value="Sí"><span>Catalán</span></label>
-            </div>
-
-            <div class="field-grid">
-              <div class="field">
-                <label for="otros-idiomas">Otros idiomas no listados</label>
-                <input type="text" id="otros-idiomas" name="Otros idiomas no listados">
-              </div>
-              <div class="field">
-                <label for="idioma-defecto">Idioma por defecto al abrir la carta</label>
-                <input type="text" id="idioma-defecto" name="Idioma por defecto al abrir la carta" placeholder="Ej. Español">
-              </div>
-            </div>
-          </section>
-
-          <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-2">
-              <span class="btn-step-arrow">←</span> Volver
-            </button>
-            <button type="button" class="btn-step-next" id="btn-next-2">
-              Continuar <span class="btn-step-arrow">→</span>
-            </button>
-          </div>
-
-        </div><!-- /step-2 -->
-
-
-        <!-- ══════════════════════════════════════
-             PASO 3 — Moneda
-             ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-3">
-
-          <section class="form-section">
-            <header class="section-header">
-              <span class="section-number">03</span>
-              <h3>Moneda</h3>
-            </header>
-            <p class="section-desc">Puedes seleccionar una o varias monedas (hasta todas las disponibles).</p>
-
-            <div class="checkbox-grid">
-              <label class="check-item"><input type="checkbox" name="Moneda: Euro (€)" value="Sí"><span>Euro (€)</span></label>
-              <label class="check-item"><input type="checkbox" name="Moneda: Libra esterlina (£)" value="Sí"><span>Libra esterlina (£)</span></label>
-              <label class="check-item"><input type="checkbox" name="Moneda: Dólar estadounidense ($)" value="Sí"><span>Dólar estadounidense ($)</span></label>
-              <label class="check-item"><input type="checkbox" name="Moneda: Dólar canadiense (CAD)" value="Sí"><span>Dólar canadiense (CAD)</span></label>
-              <label class="check-item"><input type="checkbox" name="Moneda: Franco suizo (CHF)" value="Sí"><span>Franco suizo (CHF)</span></label>
-            </div>
-
-            <div class="field-grid">
-              <div class="field">
-                <label for="otra-moneda">Otra moneda (especificar)</label>
-                <input type="text" id="otra-moneda" name="Otra moneda (especificar)">
-              </div>
-            </div>
-          </section>
-
-          <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-3">
-              <span class="btn-step-arrow">←</span> Volver
-            </button>
-            <button type="button" class="btn-step-next" id="btn-next-3">
-              Continuar <span class="btn-step-arrow">→</span>
-            </button>
-          </div>
-
-        </div><!-- /step-3 -->
-
-
-        <!-- ══════════════════════════════════════
-             PASO 4 — Diseño visual
-             ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-4">
-
-          <section class="form-section">
-            <header class="section-header">
-              <span class="section-number">04</span>
               <h3>Diseño visual de la carta</h3>
             </header>
             <p class="section-desc">Personaliza el aspecto de tu carta eligiendo la temática de color y el fondo de ambiente.</p>
@@ -398,25 +315,25 @@
           </section>
 
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-4">
+            <button type="button" class="btn-step-prev" id="btn-prev-2">
               <span class="btn-step-arrow">←</span> Volver
             </button>
-            <button type="button" class="btn-step-next" id="btn-next-4">
+            <button type="button" class="btn-step-next" id="btn-next-2">
               Continuar <span class="btn-step-arrow">→</span>
             </button>
           </div>
 
-        </div><!-- /step-4 -->
+        </div><!-- /step-2 -->
 
 
         <!-- ══════════════════════════════════════
-             PASO 5 — Fondos, superficies y platos
+             PASO 3 — Fondos, superficies y platos
              ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-5">
+        <div class="form-step hidden" id="step-3">
 
           <section class="form-section">
             <header class="section-header">
-              <span class="section-number">05</span>
+              <span class="section-number">03</span>
               <h3>Fondos y superficies disponibles</h3>
             </header>
             <button type="button" class="catalogo-toggle" id="catalogo-toggle">
@@ -623,25 +540,25 @@
           </section>
 
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-5">
+            <button type="button" class="btn-step-prev" id="btn-prev-3">
               <span class="btn-step-arrow">←</span> Volver
             </button>
-            <button type="button" class="btn-step-next" id="btn-next-5">
+            <button type="button" class="btn-step-next" id="btn-next-3">
               Continuar <span class="btn-step-arrow">→</span>
             </button>
           </div>
 
-        </div><!-- /step-5 -->
+        </div><!-- /step-3 -->
 
 
         <!-- ══════════════════════════════════════
-             PASO 6 — Perfiles dietéticos
+             PASO 4 — Perfiles dietéticos
              ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-6">
+        <div class="form-step hidden" id="step-4">
 
           <section class="form-section">
             <header class="section-header">
-              <span class="section-number">06</span>
+              <span class="section-number">04</span>
               <h3>Perfiles dietéticos</h3>
             </header>
             <p class="section-desc">Selecciona los perfiles que quieres destacar en la carta.</p>
@@ -658,25 +575,25 @@
           </section>
 
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-6">
+            <button type="button" class="btn-step-prev" id="btn-prev-4">
               <span class="btn-step-arrow">←</span> Volver
             </button>
-            <button type="button" class="btn-step-next" id="btn-next-6">
+            <button type="button" class="btn-step-next" id="btn-next-4">
               Continuar <span class="btn-step-arrow">→</span>
             </button>
           </div>
 
-        </div><!-- /step-6 -->
+        </div><!-- /step-4 -->
 
 
         <!-- ══════════════════════════════════════
-             PASO 7 — Extras y opciones avanzadas
+             PASO 5 — Extras y opciones avanzadas
              ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-7">
+        <div class="form-step hidden" id="step-5">
 
           <section class="form-section">
             <header class="section-header">
-              <span class="section-number">07</span>
+              <span class="section-number">05</span>
               <h3>Extras y opciones avanzadas</h3>
             </header>
             <div class="checkbox-grid">
@@ -685,25 +602,25 @@
           </section>
 
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-7">
+            <button type="button" class="btn-step-prev" id="btn-prev-5">
               <span class="btn-step-arrow">←</span> Volver
             </button>
-            <button type="button" class="btn-step-next" id="btn-next-7">
+            <button type="button" class="btn-step-next" id="btn-next-5">
               Continuar <span class="btn-step-arrow">→</span>
             </button>
           </div>
 
-        </div><!-- /step-7 -->
+        </div><!-- /step-5 -->
 
 
         <!-- ══════════════════════════════════════
-             PASO 8 — Observaciones + envío
+             PASO 6 — Observaciones + envío
              ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-8">
+        <div class="form-step hidden" id="step-6">
 
           <section class="form-section">
             <header class="section-header">
-              <span class="section-number">08</span>
+              <span class="section-number">06</span>
               <h3>Observaciones y notas adicionales</h3>
             </header>
             <p class="section-desc">Cualquier petición especial, referencia visual, restricción o detalle importante que no haya quedado recogido arriba.</p>
@@ -715,14 +632,14 @@
           </section>
 
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-8">
+            <button type="button" class="btn-step-prev" id="btn-prev-6">
               <span class="btn-step-arrow">←</span> Volver
             </button>
             <button type="submit" id="submit-btn">Enviar formulario</button>
           </div>
           <p id="form-error" class="form-error hidden"></p>
 
-        </div><!-- /step-8 -->
+        </div><!-- /step-6 -->
 
       </form>
 
