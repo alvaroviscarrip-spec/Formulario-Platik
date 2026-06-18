@@ -161,11 +161,11 @@ body {
 }
 
 .portada-meta-num {
-  font-family: var(--display);
+  font-family: var(--heading);
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--neon);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-shadow: 0 0 14px rgba(0, 210, 255, 0.4);
   margin-right: 4px;
 }
