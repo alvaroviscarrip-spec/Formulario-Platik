@@ -749,48 +749,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnCancelDish.addEventListener('click', clearForm);
 
-  // --- Envío del formulario ---
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    errorBox.classList.add('hidden');
-
+  // --- Envío del formulario (POST nativo — FormSubmit redirige a _next) ---
+  form.addEventListener('submit', (event) => {
     const nombreRestaurante = form.querySelector('#nombre-restaurante').value.trim();
     form.querySelector('input[name="_subject"]').value = nombreRestaurante
       ? `Nueva personalización de carta — ${nombreRestaurante}`
       : 'Nueva personalización de carta — Platik';
-
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
-
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 15000);
-
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeout);
-
-      if (!response.ok) {
-        throw new Error(`Error del servidor (${response.status})`);
-      }
-
-      // Marcar progreso completo y mostrar thank-you
-      progressFill.style.width = '100%';
-      progressStep.textContent = '¡Enviado!';
-
-      form.classList.add('hidden');
-      thankYou.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err) {
-      errorBox.textContent =
-        'No hemos podido enviar el formulario. Por favor, escríbenos directamente a contacto@platik.es o inténtalo de nuevo en unos minutos.';
-      errorBox.classList.remove('hidden');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar formulario';
-    }
   });
+
+  // --- Mostrar thank-you si FormSubmit redirigió con ?enviado=1 ---
+  if (new URLSearchParams(window.location.search).get('enviado') === '1') {
+    document.getElementById('portada').classList.add('hidden');
+    document.getElementById('progress-wrap').classList.add('hidden');
+    thankYou.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 });
