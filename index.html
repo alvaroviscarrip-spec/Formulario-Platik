@@ -24,7 +24,7 @@
       <div class="progress-wrap" id="progress-wrap">
         <div class="progress-header">
           <span class="progress-title">Tu progreso</span>
-          <span class="progress-step" id="progress-step">Paso 1 de 4</span>
+          <span class="progress-step" id="progress-step">Paso 1 de 8</span>
         </div>
         <div class="progress-track">
           <div class="progress-fill" id="progress-fill"></div>
@@ -66,11 +66,10 @@
         </div>
 
         <!-- ══════════════════════════════════════
-             PASO 1 — Datos básicos, Idiomas, Moneda
+             PASO 1 — Datos del restaurante
              ══════════════════════════════════════ -->
         <div class="form-step" id="step-1">
 
-          <!-- 01 — DATOS DEL RESTAURANTE -->
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">01</span>
@@ -148,7 +147,21 @@
             </div>
           </section>
 
-          <!-- 02 — IDIOMAS DE LA CARTA -->
+          <p class="step-error hidden" id="step-1-error">Por favor, completa los campos obligatorios (*) antes de continuar.</p>
+          <div class="step-nav step-nav--right">
+            <button type="button" class="btn-step-next" id="btn-next-1">
+              Continuar <span class="btn-step-arrow">→</span>
+            </button>
+          </div>
+
+        </div><!-- /step-1 -->
+
+
+        <!-- ══════════════════════════════════════
+             PASO 2 — Idiomas de la carta
+             ══════════════════════════════════════ -->
+        <div class="form-step hidden" id="step-2">
+
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">02</span>
@@ -183,7 +196,23 @@
             </div>
           </section>
 
-          <!-- 03 — MONEDA -->
+          <div class="step-nav step-nav--split">
+            <button type="button" class="btn-step-prev" id="btn-prev-2">
+              <span class="btn-step-arrow">←</span> Volver
+            </button>
+            <button type="button" class="btn-step-next" id="btn-next-2">
+              Continuar <span class="btn-step-arrow">→</span>
+            </button>
+          </div>
+
+        </div><!-- /step-2 -->
+
+
+        <!-- ══════════════════════════════════════
+             PASO 3 — Moneda
+             ══════════════════════════════════════ -->
+        <div class="form-step hidden" id="step-3">
+
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">03</span>
@@ -207,23 +236,23 @@
             </div>
           </section>
 
-          <!-- Navegación paso 1 -->
-          <p class="step-error hidden" id="step-1-error">Por favor, completa los campos obligatorios (*) antes de continuar.</p>
-          <div class="step-nav step-nav--right">
-            <button type="button" class="btn-step-next" id="btn-next-1">
+          <div class="step-nav step-nav--split">
+            <button type="button" class="btn-step-prev" id="btn-prev-3">
+              <span class="btn-step-arrow">←</span> Volver
+            </button>
+            <button type="button" class="btn-step-next" id="btn-next-3">
               Continuar <span class="btn-step-arrow">→</span>
             </button>
           </div>
 
-        </div><!-- /step-1 -->
+        </div><!-- /step-3 -->
 
 
         <!-- ══════════════════════════════════════
-             PASO 2 — Diseño visual
+             PASO 4 — Diseño visual
              ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-2">
+        <div class="form-step hidden" id="step-4">
 
-          <!-- 04 — DISEÑO VISUAL DE LA CARTA -->
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">04</span>
@@ -360,25 +389,23 @@
             </div>
           </section>
 
-          <!-- Navegación paso 2 -->
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-2">
+            <button type="button" class="btn-step-prev" id="btn-prev-4">
               <span class="btn-step-arrow">←</span> Volver
             </button>
-            <button type="button" class="btn-step-next" id="btn-next-2">
+            <button type="button" class="btn-step-next" id="btn-next-4">
               Continuar <span class="btn-step-arrow">→</span>
             </button>
           </div>
 
-        </div><!-- /step-2 -->
+        </div><!-- /step-4 -->
 
 
         <!-- ══════════════════════════════════════
-             PASO 3 — Fondos, superficies y platos
+             PASO 5 — Fondos, superficies y platos
              ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-3">
+        <div class="form-step hidden" id="step-5">
 
-          <!-- 05 — FONDOS Y SUPERFICIES -->
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">05</span>
@@ -587,25 +614,23 @@
             </div>
           </section>
 
-          <!-- Navegación paso 3 -->
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-3">
+            <button type="button" class="btn-step-prev" id="btn-prev-5">
               <span class="btn-step-arrow">←</span> Volver
             </button>
-            <button type="button" class="btn-step-next" id="btn-next-3">
+            <button type="button" class="btn-step-next" id="btn-next-5">
               Continuar <span class="btn-step-arrow">→</span>
             </button>
           </div>
 
-        </div><!-- /step-3 -->
+        </div><!-- /step-5 -->
 
 
         <!-- ══════════════════════════════════════
-             PASO 4 — Perfiles, Extras, Observaciones
+             PASO 6 — Perfiles dietéticos
              ══════════════════════════════════════ -->
-        <div class="form-step hidden" id="step-4">
+        <div class="form-step hidden" id="step-6">
 
-          <!-- 06 — PERFILES DIETÉTICOS -->
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">06</span>
@@ -624,7 +649,23 @@
             </div>
           </section>
 
-          <!-- 07 — EXTRAS Y OPCIONES AVANZADAS -->
+          <div class="step-nav step-nav--split">
+            <button type="button" class="btn-step-prev" id="btn-prev-6">
+              <span class="btn-step-arrow">←</span> Volver
+            </button>
+            <button type="button" class="btn-step-next" id="btn-next-6">
+              Continuar <span class="btn-step-arrow">→</span>
+            </button>
+          </div>
+
+        </div><!-- /step-6 -->
+
+
+        <!-- ══════════════════════════════════════
+             PASO 7 — Extras y opciones avanzadas
+             ══════════════════════════════════════ -->
+        <div class="form-step hidden" id="step-7">
+
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">07</span>
@@ -635,7 +676,23 @@
             </div>
           </section>
 
-          <!-- 08 — OBSERVACIONES -->
+          <div class="step-nav step-nav--split">
+            <button type="button" class="btn-step-prev" id="btn-prev-7">
+              <span class="btn-step-arrow">←</span> Volver
+            </button>
+            <button type="button" class="btn-step-next" id="btn-next-7">
+              Continuar <span class="btn-step-arrow">→</span>
+            </button>
+          </div>
+
+        </div><!-- /step-7 -->
+
+
+        <!-- ══════════════════════════════════════
+             PASO 8 — Observaciones + envío
+             ══════════════════════════════════════ -->
+        <div class="form-step hidden" id="step-8">
+
           <section class="form-section">
             <header class="section-header">
               <span class="section-number">08</span>
@@ -649,16 +706,15 @@
             </div>
           </section>
 
-          <!-- Navegación paso 4 + envío -->
           <div class="step-nav step-nav--split">
-            <button type="button" class="btn-step-prev" id="btn-prev-4">
+            <button type="button" class="btn-step-prev" id="btn-prev-8">
               <span class="btn-step-arrow">←</span> Volver
             </button>
             <button type="submit" id="submit-btn">Enviar formulario</button>
           </div>
           <p id="form-error" class="form-error hidden"></p>
 
-        </div><!-- /step-4 -->
+        </div><!-- /step-8 -->
 
       </form>
 

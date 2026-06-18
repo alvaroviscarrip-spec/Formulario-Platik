@@ -8,14 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressFill = document.getElementById('progress-fill');
   const progressStep = document.getElementById('progress-step');
 
+  const TOTAL_STEPS = 8;
+
   function updateStepProgress(step) {
-    const pct = (step - 1) * 25;
+    const pct = (step - 1) / TOTAL_STEPS * 100;
     progressFill.style.width = pct + '%';
-    progressStep.textContent = `Paso ${step} de 4`;
-    [1, 2, 3, 4].forEach((i) => {
-      document.getElementById(`cp-dot-${i}`)
-        ?.classList.toggle('reached', i < step);
-    });
+    progressStep.textContent = `Paso ${step} de ${TOTAL_STEPS}`;
+    // Checkpoints a 25 %, 50 %, 75 %, 100 % — se iluminan al completar grupos
+    document.getElementById('cp-dot-1')?.classList.toggle('reached', step > 3);
+    document.getElementById('cp-dot-2')?.classList.toggle('reached', step > 4);
+    document.getElementById('cp-dot-3')?.classList.toggle('reached', step > 5);
+    document.getElementById('cp-dot-4')?.classList.toggle('reached', step > TOTAL_STEPS);
   }
 
   // --- Navegación por pasos ---
@@ -77,6 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-next-3').addEventListener('click', () => goToStep(4, 'fwd'));
 
   document.getElementById('btn-prev-4').addEventListener('click', () => goToStep(3, 'back'));
+  document.getElementById('btn-next-4').addEventListener('click', () => goToStep(5, 'fwd'));
+
+  document.getElementById('btn-prev-5').addEventListener('click', () => goToStep(4, 'back'));
+  document.getElementById('btn-next-5').addEventListener('click', () => goToStep(6, 'fwd'));
+
+  document.getElementById('btn-prev-6').addEventListener('click', () => goToStep(5, 'back'));
+  document.getElementById('btn-next-6').addEventListener('click', () => goToStep(7, 'fwd'));
+
+  document.getElementById('btn-prev-7').addEventListener('click', () => goToStep(6, 'back'));
+  document.getElementById('btn-next-7').addEventListener('click', () => goToStep(8, 'fwd'));
+
+  document.getElementById('btn-prev-8').addEventListener('click', () => goToStep(7, 'back'));
 
   // --- Bloquear envío con Enter ---
   form.addEventListener('keydown', (e) => {
