@@ -102,27 +102,158 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Temática visual: resaltar tarjeta seleccionada ---
-  const themeRadios = form.querySelectorAll('input[name="Temática visual"]');
+  // --- Design Studio (Step 2) ---
+  const TEMAS = [
+    { value: '01 · Negro & Blanco',   label: 'Negro & Blanco',   bg: '#080808', acc: '#f5f5f5', text: '#f5f5f5' },
+    { value: '02 · Blanco & Negro',   label: 'Blanco & Negro',   bg: '#f4f1ea', acc: '#111111', text: '#111111' },
+    { value: '03 · Marino & Naranja', label: 'Marino & Naranja', bg: '#0c1a28', acc: '#e06028', text: '#eee8d8' },
+    { value: '04 · Vino Tinto',       label: 'Vino Tinto',       bg: '#1c0810', acc: '#b81830', text: '#f0e4d4' },
+    { value: '05 · Marfil & Vino',    label: 'Marfil & Vino',    bg: '#f4f0e4', acc: '#881830', text: '#280e18' },
+    { value: '06 · Verde Oliva',      label: 'Verde Oliva',      bg: '#111808', acc: '#688030', text: '#dce8c4' },
+    { value: '07 · Marino & Dorado',  label: 'Marino & Dorado',  bg: '#091428', acc: '#c09838', text: '#e4d8c0' },
+    { value: '08 · Negro & Dorado',   label: 'Negro & Dorado',   bg: '#080808', acc: '#c09838', text: '#ece0c8' },
+    { value: '09 · Oliva & Dorado',   label: 'Oliva & Dorado',   bg: '#111808', acc: '#c09838', text: '#e4ecc8' },
+  ];
 
-  function updateThemeCards() {
-    themeRadios.forEach((radio) => {
-      radio.closest('.theme-card').classList.toggle('is-selected', radio.checked);
+  const FONDOS = [
+    { value: 'Bar la malul apei',  src: 'Fondo%20de%20carta/Bar%20la%20malul%20apei.png' },
+    { value: 'Sunset Dining',      src: 'Fondo%20de%20carta/Sunset%20Dining.jfif' },
+    { value: 'Fondo 03',           src: 'Fondo%20de%20carta/descarga%20(35).jfif' },
+    { value: 'Fondo 04',           src: 'Fondo%20de%20carta/descarga%20(36).jfif' },
+    { value: 'Fondo 05',           src: 'Fondo%20de%20carta/descarga%20(37).jfif' },
+    { value: 'Fondo 06',           src: 'Fondo%20de%20carta/descarga%20(38)%20-%20copia.png' },
+    { value: 'Dinner with a view', src: 'Fondo%20de%20carta/dinner%20with%20a%20view.png' },
+    { value: 'Sin fondo de carta', src: null },
+  ];
+
+  const DEMO_CATS = ['Entrantes', 'Principales', 'Postres'];
+
+  const DEMO_DISHES = [
+    [
+      { name: 'Croquetas de jamón',   desc: 'Bechamel, jamón ibérico',    price: '8,50 €'  },
+      { name: 'Ensalada César',       desc: 'Romana, pollo, parmesano',  price: '11,00 €' },
+      { name: 'Carpaccio de ternera', desc: 'Rúcula, alcaparras, limón', price: '14,00 €' },
+      { name: 'Burrata con tomate',   desc: 'Tomate cherry, albahaca',   price: '13,50 €' },
+    ],
+    [
+      { name: 'Solomillo a la brasa', desc: 'Salsa de trufa, patatas',   price: '26,00 €' },
+      { name: 'Merluza a la vasca',   desc: 'Salsa verde, almejas',      price: '22,00 €' },
+      { name: 'Risotto de boletus',   desc: 'Parmesano, trufa negra',    price: '19,00 €' },
+    ],
+    [
+      { name: 'Tarta de queso vasca', desc: 'Mousse, frutos rojos',      price: '7,00 €'  },
+      { name: 'Coulant de chocolate', desc: 'Corazón fundente, helado',  price: '7,50 €'  },
+      { name: 'Crème brûlée',        desc: 'Vainilla de Madagascar',    price: '6,50 €'  },
+    ],
+  ];
+
+  const demoMenu       = document.getElementById('demo-menu');
+  const demoBg         = document.getElementById('demo-bg');
+  const demoCatsEl     = document.getElementById('demo-cats');
+  const demoDishesEl   = document.getElementById('demo-dishes');
+  const temaHidden     = document.getElementById('tema-value');
+  const fondoHidden    = document.getElementById('fondo-value');
+  const swatchGrid     = document.getElementById('swatch-grid');
+  const fondoThumbGrid = document.getElementById('fondo-thumb-grid');
+
+  function applyTema(idx) {
+    const t = TEMAS[idx];
+    demoMenu.style.setProperty('--dm-bg',   t.bg);
+    demoMenu.style.setProperty('--dm-acc',  t.acc);
+    demoMenu.style.setProperty('--dm-text', t.text);
+    demoMenu.style.background = t.bg;
+    temaHidden.value = t.value;
+  }
+
+  function renderDemoDishes(catIdx) {
+    demoDishesEl.innerHTML = '';
+    DEMO_DISHES[catIdx].forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'demo-dish';
+      el.innerHTML =
+        '<div class="demo-dish-head">' +
+          '<span class="demo-dish-name">' + d.name + '</span>' +
+          '<span class="demo-dish-price">' + d.price + '</span>' +
+        '</div>' +
+        '<div class="demo-dish-desc">' + d.desc + '</div>';
+      demoDishesEl.appendChild(el);
     });
   }
 
-  themeRadios.forEach((radio) => radio.addEventListener('change', updateThemeCards));
-
-  // --- Fondo de carta: resaltar tarjeta seleccionada ---
-  const fondoRadios = form.querySelectorAll('input[name="Fondo de carta"]');
-
-  function updateFondoCards() {
-    fondoRadios.forEach((radio) => {
-      radio.closest('.theme-card').classList.toggle('is-selected', radio.checked);
+  // Category tabs
+  DEMO_CATS.forEach((cat, i) => {
+    const el = document.createElement('div');
+    el.className = 'demo-cat' + (i === 0 ? ' demo-cat--active' : '');
+    el.textContent = cat;
+    el.addEventListener('click', () => {
+      demoCatsEl.querySelectorAll('.demo-cat').forEach((c, j) => c.classList.toggle('demo-cat--active', j === i));
+      renderDemoDishes(i);
     });
-  }
+    demoCatsEl.appendChild(el);
+  });
 
-  fondoRadios.forEach((radio) => radio.addEventListener('change', updateFondoCards));
+  // Color swatches
+  TEMAS.forEach((t, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'swatch-btn' + (i === 0 ? ' is-selected' : '');
+
+    const colorDiv = document.createElement('div');
+    colorDiv.className = 'swatch-color';
+    colorDiv.style.background = 'linear-gradient(135deg, ' + t.bg + ' 45%, ' + t.acc + ' 100%)';
+
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'swatch-name';
+    nameSpan.textContent = t.label;
+
+    btn.appendChild(colorDiv);
+    btn.appendChild(nameSpan);
+    btn.addEventListener('click', () => {
+      swatchGrid.querySelectorAll('.swatch-btn').forEach((b, j) => b.classList.toggle('is-selected', j === i));
+      applyTema(i);
+    });
+    swatchGrid.appendChild(btn);
+  });
+
+  // Fondo thumbnails
+  FONDOS.forEach((f, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    const isLast = i === FONDOS.length - 1;
+
+    if (f.src) {
+      btn.className = 'fondo-thumb-btn';
+      const img = document.createElement('img');
+      img.src = f.src;
+      img.alt = f.value;
+      img.loading = 'lazy';
+      btn.appendChild(img);
+    } else {
+      btn.className = 'fondo-thumb-btn fondo-none is-selected';
+      const lbl = document.createElement('span');
+      lbl.className = 'fondo-none-lbl';
+      lbl.textContent = 'Sin fondo';
+      btn.appendChild(lbl);
+    }
+
+    btn.addEventListener('click', () => {
+      fondoThumbGrid.querySelectorAll('.fondo-thumb-btn').forEach((b, j) => b.classList.toggle('is-selected', j === i));
+      if (f.src) {
+        demoBg.style.backgroundImage = "url('" + f.src + "')";
+        demoBg.classList.add('has-image');
+      } else {
+        demoBg.style.backgroundImage = '';
+        demoBg.classList.remove('has-image');
+      }
+      fondoHidden.value = f.value;
+    });
+    fondoThumbGrid.appendChild(btn);
+  });
+
+  // Initialize design studio
+  renderDemoDishes(0);
+  applyTema(0);
+  fondoHidden.value = FONDOS[FONDOS.length - 1].value;
 
   // --- Numeración de emplatados (excluye "Otro") ---
   document.querySelectorAll('.emplatado-item:not(.emplatado-item--otro)').forEach((item, i) => {

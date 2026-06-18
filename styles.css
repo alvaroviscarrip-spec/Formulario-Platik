@@ -786,6 +786,445 @@ input[type="radio"]:checked {
   text-align: center;
 }
 
+/* ── Design Studio (Step 2) ── */
+.design-studio {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 20px 22px 28px;
+}
+
+/* Phone wrap + side buttons */
+.phone-wrap {
+  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.phone-wrap::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 84px;
+  width: 4px;
+  height: 22px;
+  background: #2a2a2e;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 34px 0 #2a2a2e;
+}
+
+.phone-wrap::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 98px;
+  width: 4px;
+  height: 46px;
+  background: #2a2a2e;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Phone frame */
+.phone-frame {
+  width: 210px;
+  background: #1a1a1e;
+  border-radius: 40px;
+  border: 9px solid #1a1a1e;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 40px 100px rgba(0, 0, 0, 0.75),
+    0 15px 40px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-notch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  background: #0a0a0a;
+  flex-shrink: 0;
+}
+
+.phone-island {
+  width: 86px;
+  height: 24px;
+  background: #050505;
+  border-radius: 13px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.phone-screen {
+  overflow: hidden;
+  background: #000;
+  flex: 1;
+}
+
+/* Demo menu inside phone */
+.demo-menu {
+  --dm-bg:   #080808;
+  --dm-acc:  #f5f5f5;
+  --dm-text: #f5f5f5;
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  background: var(--dm-bg);
+}
+
+.demo-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.45s;
+}
+
+.demo-bg.has-image {
+  opacity: 0.22;
+}
+
+.demo-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.demo-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 13px 3px;
+  font-family: var(--heading);
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--dm-text);
+}
+
+.demo-status-icons {
+  font-size: 5px;
+  letter-spacing: 0.12em;
+}
+
+.demo-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 0 8px;
+}
+
+.demo-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: var(--dm-acc);
+  color: var(--dm-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.demo-resto-name {
+  font-family: 'Cinzel', serif;
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dm-text);
+}
+
+.demo-accent-line {
+  height: 1px;
+  margin: 0 18px 8px;
+  background: var(--dm-acc);
+  opacity: 0.5;
+}
+
+.demo-cats {
+  display: flex;
+  gap: 4px;
+  padding: 0 10px 8px;
+  overflow-x: hidden;
+}
+
+.demo-cat {
+  font-family: var(--heading);
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 20px;
+  color: var(--dm-text);
+  opacity: 0.45;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, opacity 0.3s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.demo-cat--active {
+  background: var(--dm-acc);
+  color: var(--dm-bg);
+  opacity: 1;
+}
+
+.demo-dishes {
+  padding: 0 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.demo-dish {
+  background: rgba(128, 128, 128, 0.1);
+  border: 1px solid rgba(128, 128, 128, 0.08);
+  border-radius: 6px;
+  padding: 7px 9px;
+}
+
+.demo-dish-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.demo-dish-name {
+  font-family: var(--heading);
+  font-size: 7px;
+  font-weight: 700;
+  color: var(--dm-text);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.04em;
+}
+
+.demo-dish-price {
+  font-family: var(--heading);
+  font-size: 7px;
+  font-weight: 700;
+  color: var(--dm-acc);
+  flex-shrink: 0;
+}
+
+.demo-dish-desc {
+  font-size: 5.5px;
+  color: var(--dm-text);
+  opacity: 0.5;
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phone-chin {
+  display: flex;
+  justify-content: center;
+  padding: 7px 0 5px;
+  background: #0a0a0a;
+  flex-shrink: 0;
+}
+
+.phone-home {
+  width: 58px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 3px;
+}
+
+/* Design controls (right side) */
+.design-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 2px;
+  min-width: 0;
+}
+
+.design-ctrl-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.design-ctrl-label {
+  font-family: var(--heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--neon);
+  opacity: 0.75;
+  margin: 0;
+}
+
+/* Color swatches */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 10px;
+}
+
+.swatch-btn {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.swatch-color {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  border: 2.5px solid transparent;
+  transition: border-color 0.22s, transform 0.15s, box-shadow 0.22s;
+  position: relative;
+  overflow: hidden;
+}
+
+.swatch-color::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, transparent 55%);
+}
+
+.swatch-btn:hover .swatch-color {
+  transform: scale(1.08);
+}
+
+.swatch-btn.is-selected .swatch-color {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 1px var(--neon), 0 0 14px rgba(0, 210, 255, 0.45);
+}
+
+.swatch-name {
+  font-family: var(--heading);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80px;
+  transition: color 0.22s;
+}
+
+.swatch-btn.is-selected .swatch-name {
+  color: var(--neon);
+}
+
+/* Fondo thumbnails */
+.fondo-thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.fondo-thumb-btn {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  display: block;
+  transition: border-color 0.22s, transform 0.15s, box-shadow 0.22s;
+}
+
+.fondo-thumb-btn img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.fondo-thumb-btn.fondo-none {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  border: 2px dashed rgba(0, 210, 255, 0.22);
+  border-radius: 7px;
+  background: rgba(5, 11, 24, 0.4);
+  overflow: visible;
+}
+
+.fondo-none-lbl {
+  font-family: var(--heading);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.3;
+  padding: 3px;
+}
+
+.fondo-thumb-btn:hover {
+  transform: scale(1.05);
+}
+
+.fondo-thumb-btn.is-selected {
+  border-color: var(--neon);
+  border-style: solid;
+  box-shadow: 0 0 0 1px var(--neon), 0 0 12px rgba(0, 210, 255, 0.35);
+}
+
+@media (max-width: 700px) {
+  .design-studio {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phone-wrap {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .design-controls {
+    width: 100%;
+  }
+
+  .swatch-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .swatch-btn {
+    width: 100%;
+  }
+
+  .swatch-name {
+    width: 100%;
+  }
+}
+
 /* ── Emplatado gallery (section 05) ── */
 .emplatado-grid {
   display: grid;
