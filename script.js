@@ -1,59 +1,84 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('platik-form');
+  const form      = document.getElementById('platik-form');
   const submitBtn = document.getElementById('submit-btn');
-  const errorBox = document.getElementById('form-error');
-  const thankYou = document.getElementById('thank-you');
+  const errorBox  = document.getElementById('form-error');
+  const thankYou  = document.getElementById('thank-you');
 
-  // --- Barra de progreso ---
+  // --- Barra de progreso (basada en paso) ---
   const progressFill = document.getElementById('progress-fill');
-  const progressPct  = document.getElementById('progress-pct');
+  const progressStep = document.getElementById('progress-step');
 
-  function calcProgress() {
-    let score = 0;
-
-    // Datos básicos (25 pts) — secciones 01, 02, 03
-    if (form.querySelector('#nombre-restaurante').value.trim())   score += 7;
-    if (form.querySelector('#persona-contacto').value.trim())     score += 6;
-    if (form.querySelector('#telefono').value.trim())             score += 6;
-    if (form.querySelector('#email').value.trim())                score += 6;
-
-    // Diseño (25 pts) — sección 04
-    if (form.querySelector('input[name="Temática visual"]:checked'))  score += 13;
-    if (form.querySelector('input[name="Fondo de carta"]:checked'))   score += 12;
-
-    // Carta (25 pts) — sección 05
-    const enModoSubir = document.getElementById('mode-subir')?.checked;
-    if (enModoSubir) {
-      const fileInput = document.getElementById('carta-file-input');
-      if (fileInput?.files?.length)      score += 13;
-      if (typeof emplatadoSels !== 'undefined' && emplatadoSels.length) score += 12;
-    } else {
-      if (typeof dishes !== 'undefined' && dishes.length) score += 25;
-    }
-
-    // Extras (25 pts) — secciones 06, 07, 08
-    if (form.querySelectorAll('input[name^="Perfil:"]:checked').length)  score += 10;
-    if (form.querySelectorAll('input[name^="Extra:"]:checked').length)   score += 5;
-    const obs = form.querySelector('textarea[name="Observaciones y notas adicionales"]');
-    if (obs?.value.trim()) score += 10;
-
-    return Math.min(score, 100);
-  }
-
-  function updateProgress() {
-    const pct = calcProgress();
+  function updateStepProgress(step) {
+    const pct = (step - 1) * 25;
     progressFill.style.width = pct + '%';
-    progressPct.textContent  = pct + '%';
-    [25, 50, 75, 100].forEach((threshold, i) => {
-      document.getElementById(`cp-dot-${i + 1}`)
-        ?.classList.toggle('reached', pct >= threshold);
+    progressStep.textContent = `Paso ${step} de 4`;
+    [1, 2, 3, 4].forEach((i) => {
+      document.getElementById(`cp-dot-${i}`)
+        ?.classList.toggle('reached', i < step);
     });
   }
 
-  form.addEventListener('input',  updateProgress);
-  form.addEventListener('change', updateProgress);
+  // --- Navegación por pasos ---
+  let currentStep = 1;
 
-  // --- Bloquear envío con Enter (solo el botón final lo permite) ---
+  function goToStep(target, direction) {
+    const fromEl = document.getElementById(`step-${currentStep}`);
+    const toEl   = document.getElementById(`step-${target}`);
+
+    const exitClass  = direction === 'fwd' ? 'step-exiting-fwd'  : 'step-exiting-back';
+    const enterClass = direction === 'fwd' ? 'step-entering-fwd' : 'step-entering-back';
+
+    fromEl.classList.add(exitClass);
+
+    setTimeout(() => {
+      fromEl.classList.add('hidden');
+      fromEl.classList.remove(exitClass);
+
+      toEl.classList.remove('hidden');
+      toEl.classList.add(enterClass);
+      currentStep = target;
+      updateStepProgress(target);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      setTimeout(() => toEl.classList.remove(enterClass), 360);
+    }, 260);
+  }
+
+  function validateStep1() {
+    const required = [
+      form.querySelector('#nombre-restaurante'),
+      form.querySelector('#persona-contacto'),
+      form.querySelector('#telefono'),
+      form.querySelector('#email'),
+    ];
+    for (const el of required) {
+      if (!el.value.trim()) {
+        el.focus();
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const errEl = document.getElementById('step-1-error');
+        if (errEl) {
+          errEl.classList.remove('hidden');
+          setTimeout(() => errEl.classList.add('hidden'), 4000);
+        }
+        return false;
+      }
+    }
+    return true;
+  }
+
+  document.getElementById('btn-next-1').addEventListener('click', () => {
+    if (validateStep1()) goToStep(2, 'fwd');
+  });
+
+  document.getElementById('btn-prev-2').addEventListener('click', () => goToStep(1, 'back'));
+  document.getElementById('btn-next-2').addEventListener('click', () => goToStep(3, 'fwd'));
+
+  document.getElementById('btn-prev-3').addEventListener('click', () => goToStep(2, 'back'));
+  document.getElementById('btn-next-3').addEventListener('click', () => goToStep(4, 'fwd'));
+
+  document.getElementById('btn-prev-4').addEventListener('click', () => goToStep(3, 'back'));
+
+  // --- Bloquear envío con Enter ---
   form.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
       e.preventDefault();
@@ -172,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isOtro) otraDescWrap.classList.remove('hidden');
         refreshOrderBadges();
       }
-      updateProgress();
     });
   });
 
@@ -325,7 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     syncPlatosData();
-    updateProgress();
   }
 
   function clearForm() {
@@ -409,15 +432,27 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.textContent = 'Enviando...';
 
     try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+
       const response = await fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
-        headers: { Accept: 'application/json' },
+        signal: controller.signal,
       });
 
+      clearTimeout(timeout);
+
       if (!response.ok) {
-        throw new Error(`Respuesta inesperada del servidor (${response.status})`);
+        throw new Error(`Error del servidor (${response.status})`);
       }
+
+      // Marcar progreso completo y mostrar thank-you
+      progressFill.style.width = '100%';
+      [1, 2, 3, 4].forEach(i =>
+        document.getElementById(`cp-dot-${i}`)?.classList.add('reached')
+      );
+      progressStep.textContent = '¡Enviado!';
 
       form.classList.add('hidden');
       thankYou.classList.remove('hidden');
