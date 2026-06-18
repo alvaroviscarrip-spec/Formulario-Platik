@@ -437,7 +437,7 @@
                 </label>
               </div>
 
-              <div id="panel-plato-a-plato">
+              <div id="panel-plato-a-plato" class="hidden">
                 <p class="section-desc" style="padding: 0 0 16px;">Añade cada plato indicando nombre, descripción, categoría y el número de emplatado elegido arriba. Puedes editar cualquier plato después de añadirlo.</p>
 
                 <div id="dish-list" class="dish-list"></div>
@@ -518,10 +518,10 @@
                 <textarea name="Platos de la carta" id="platos-data" style="display:none" aria-hidden="true"></textarea>
               </div>
 
-              <div id="panel-subir-carta" class="hidden">
+              <div id="panel-subir-carta">
                 <div class="field upload-field">
                   <label>Archivo de carta <span style="font-weight:400;opacity:0.6;text-transform:none;letter-spacing:0;">(PDF, Word, imagen...)</span></label>
-                  <input type="file" name="Archivo de carta" id="carta-file-input" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.txt" disabled>
+                  <input type="file" name="Archivo de carta" id="carta-file-input" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.txt">
                 </div>
                 <div class="emplatado-auto-notice">
                   <span class="emplatado-auto-icon">✦</span>
@@ -534,7 +534,7 @@
                 <div id="avanzada-notice" class="upload-notice hidden">
                   <p>Abre el catálogo de arriba y selecciona los emplatados <strong>en el mismo orden</strong> en que aparecen los platos en tu carta.</p>
                 </div>
-                <textarea name="Emplatados seleccionados (en orden)" id="emplatados-order-data" style="display:none" aria-hidden="true" disabled></textarea>
+                <textarea name="Emplatados seleccionados (en orden)" id="emplatados-order-data" style="display:none" aria-hidden="true"></textarea>
               </div>
             </div>
           </section>

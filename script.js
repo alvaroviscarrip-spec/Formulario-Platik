@@ -276,9 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
   modePlato && modePlato.addEventListener('change', activatePlatoMode);
   modeSubir && modeSubir.addEventListener('change', activateSubirMode);
 
-  // Inicializar en modo "subir carta" (opción por defecto)
-  activateSubirMode();
-
   // --- Gestión de platos ---
   const dishList      = document.getElementById('dish-list');
   const dfNombre      = document.getElementById('df-nombre');
