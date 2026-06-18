@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressFill = document.getElementById('progress-fill');
   const progressStep = document.getElementById('progress-step');
 
-  const TOTAL_STEPS = 6;
+  const TOTAL_STEPS = 4;
 
   function updateStepProgress(step) {
     const pct = step / TOTAL_STEPS * 100;
@@ -274,12 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-next-3').addEventListener('click', () => goToStep(4, 'fwd'));
 
   document.getElementById('btn-prev-4').addEventListener('click', () => goToStep(3, 'back'));
-  document.getElementById('btn-next-4').addEventListener('click', () => goToStep(5, 'fwd'));
-
-  document.getElementById('btn-prev-5').addEventListener('click', () => goToStep(4, 'back'));
-  document.getElementById('btn-next-5').addEventListener('click', () => goToStep(6, 'fwd'));
-
-  document.getElementById('btn-prev-6').addEventListener('click', () => goToStep(5, 'back'));
 
   // --- Bloquear envío con Enter ---
   form.addEventListener('keydown', (e) => {
