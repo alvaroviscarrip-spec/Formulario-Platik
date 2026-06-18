@@ -749,21 +749,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnCancelDish.addEventListener('click', clearForm);
 
-  // --- Envío del formulario (POST nativo — FormSubmit redirige a _next) ---
-  form.addEventListener('submit', (event) => {
+  // --- Envío del formulario (AJAX → Web3Forms JSON API) ---
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    errorBox.classList.add('hidden');
+
     const nombreRestaurante = form.querySelector('#nombre-restaurante').value.trim();
     form.querySelector('input[name="subject"]').value = nombreRestaurante
       ? `Nueva personalización de carta — ${nombreRestaurante}`
       : 'Nueva personalización de carta — Platik';
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
-  });
 
-  // --- Mostrar thank-you si FormSubmit redirigió con ?enviado=1 ---
-  if (new URLSearchParams(window.location.search).get('enviado') === '1') {
-    document.getElementById('portada').classList.add('hidden');
-    document.getElementById('progress-wrap').classList.add('hidden');
-    thankYou.classList.remove('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        progressFill.style.width = '100%';
+        progressStep.textContent = '¡Enviado!';
+        form.classList.add('hidden');
+        thankYou.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(data.message || 'Error desconocido');
+      }
+    } catch (err) {
+      errorBox.textContent = 'No hemos podido enviar el formulario. Por favor, escríbenos directamente a contacto@platik.es o inténtalo de nuevo.';
+      errorBox.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar formulario';
+    }
+  });
 });
