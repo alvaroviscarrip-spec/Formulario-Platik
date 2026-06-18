@@ -55,25 +55,211 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 380);
   });
 
+  // --- Datos de prefijos telefónicos ---
+  const PHONE_DATA = [
+    { label: 'España',                   code: '+34',  min: 9,  max: 9  },
+    { label: 'Afganistán',               code: '+93',  min: 9,  max: 9  },
+    { label: 'Albania',                  code: '+355', min: 9,  max: 9  },
+    { label: 'Alemania',                 code: '+49',  min: 3,  max: 12 },
+    { label: 'Andorra',                  code: '+376', min: 6,  max: 9  },
+    { label: 'Angola',                   code: '+244', min: 9,  max: 9  },
+    { label: 'Arabia Saudí',             code: '+966', min: 9,  max: 9  },
+    { label: 'Argelia',                  code: '+213', min: 9,  max: 9  },
+    { label: 'Argentina',                code: '+54',  min: 10, max: 11 },
+    { label: 'Armenia',                  code: '+374', min: 8,  max: 8  },
+    { label: 'Australia',                code: '+61',  min: 9,  max: 9  },
+    { label: 'Austria',                  code: '+43',  min: 4,  max: 13 },
+    { label: 'Azerbaiyán',               code: '+994', min: 9,  max: 9  },
+    { label: 'Bahréin',                  code: '+973', min: 8,  max: 8  },
+    { label: 'Bangladés',                code: '+880', min: 10, max: 10 },
+    { label: 'Bélgica',                  code: '+32',  min: 8,  max: 9  },
+    { label: 'Bielorrusia',              code: '+375', min: 9,  max: 9  },
+    { label: 'Bolivia',                  code: '+591', min: 8,  max: 8  },
+    { label: 'Bosnia-Herzegovina',       code: '+387', min: 8,  max: 8  },
+    { label: 'Brasil',                   code: '+55',  min: 10, max: 11 },
+    { label: 'Bulgaria',                 code: '+359', min: 8,  max: 9  },
+    { label: 'Camerún',                  code: '+237', min: 9,  max: 9  },
+    { label: 'Canadá',                   code: '+1',   min: 10, max: 10 },
+    { label: 'Chile',                    code: '+56',  min: 9,  max: 9  },
+    { label: 'China',                    code: '+86',  min: 11, max: 11 },
+    { label: 'Chipre',                   code: '+357', min: 8,  max: 8  },
+    { label: 'Colombia',                 code: '+57',  min: 10, max: 10 },
+    { label: 'Corea del Norte',          code: '+850', min: 8,  max: 10 },
+    { label: 'Corea del Sur',            code: '+82',  min: 9,  max: 11 },
+    { label: 'Costa Rica',               code: '+506', min: 8,  max: 8  },
+    { label: 'Croacia',                  code: '+385', min: 8,  max: 9  },
+    { label: 'Cuba',                     code: '+53',  min: 8,  max: 8  },
+    { label: 'Dinamarca',                code: '+45',  min: 8,  max: 8  },
+    { label: 'Ecuador',                  code: '+593', min: 9,  max: 9  },
+    { label: 'Egipto',                   code: '+20',  min: 10, max: 10 },
+    { label: 'El Salvador',              code: '+503', min: 8,  max: 8  },
+    { label: 'Emiratos Árabes Unidos',   code: '+971', min: 9,  max: 9  },
+    { label: 'Eslovaquia',               code: '+421', min: 9,  max: 9  },
+    { label: 'Eslovenia',                code: '+386', min: 8,  max: 8  },
+    { label: 'Estados Unidos',           code: '+1',   min: 10, max: 10 },
+    { label: 'Estonia',                  code: '+372', min: 7,  max: 8  },
+    { label: 'Etiopía',                  code: '+251', min: 9,  max: 9  },
+    { label: 'Filipinas',                code: '+63',  min: 10, max: 10 },
+    { label: 'Finlandia',                code: '+358', min: 5,  max: 11 },
+    { label: 'Francia',                  code: '+33',  min: 9,  max: 9  },
+    { label: 'Georgia',                  code: '+995', min: 9,  max: 9  },
+    { label: 'Ghana',                    code: '+233', min: 9,  max: 9  },
+    { label: 'Grecia',                   code: '+30',  min: 10, max: 10 },
+    { label: 'Guatemala',                code: '+502', min: 8,  max: 8  },
+    { label: 'Honduras',                 code: '+504', min: 8,  max: 8  },
+    { label: 'Hong Kong',                code: '+852', min: 8,  max: 8  },
+    { label: 'Hungría',                  code: '+36',  min: 8,  max: 9  },
+    { label: 'India',                    code: '+91',  min: 10, max: 10 },
+    { label: 'Indonesia',                code: '+62',  min: 9,  max: 12 },
+    { label: 'Irak',                     code: '+964', min: 10, max: 10 },
+    { label: 'Irán',                     code: '+98',  min: 10, max: 10 },
+    { label: 'Irlanda',                  code: '+353', min: 9,  max: 9  },
+    { label: 'Islandia',                 code: '+354', min: 7,  max: 7  },
+    { label: 'Israel',                   code: '+972', min: 9,  max: 9  },
+    { label: 'Italia',                   code: '+39',  min: 9,  max: 11 },
+    { label: 'Jamaica',                  code: '+1',   min: 10, max: 10 },
+    { label: 'Japón',                    code: '+81',  min: 9,  max: 11 },
+    { label: 'Jordania',                 code: '+962', min: 9,  max: 9  },
+    { label: 'Kazajistán',               code: '+7',   min: 10, max: 10 },
+    { label: 'Kenia',                    code: '+254', min: 9,  max: 9  },
+    { label: 'Kuwait',                   code: '+965', min: 8,  max: 8  },
+    { label: 'Letonia',                  code: '+371', min: 8,  max: 8  },
+    { label: 'Líbano',                   code: '+961', min: 7,  max: 8  },
+    { label: 'Libia',                    code: '+218', min: 9,  max: 10 },
+    { label: 'Lituania',                 code: '+370', min: 8,  max: 8  },
+    { label: 'Luxemburgo',               code: '+352', min: 6,  max: 11 },
+    { label: 'Macao',                    code: '+853', min: 8,  max: 8  },
+    { label: 'Macedonia del Norte',      code: '+389', min: 8,  max: 8  },
+    { label: 'Malasia',                  code: '+60',  min: 9,  max: 10 },
+    { label: 'Malta',                    code: '+356', min: 8,  max: 8  },
+    { label: 'Marruecos',                code: '+212', min: 9,  max: 9  },
+    { label: 'México',                   code: '+52',  min: 10, max: 10 },
+    { label: 'Moldavia',                 code: '+373', min: 8,  max: 8  },
+    { label: 'Montenegro',               code: '+382', min: 8,  max: 8  },
+    { label: 'Mozambique',               code: '+258', min: 9,  max: 9  },
+    { label: 'Nepal',                    code: '+977', min: 10, max: 10 },
+    { label: 'Nicaragua',                code: '+505', min: 8,  max: 8  },
+    { label: 'Nigeria',                  code: '+234', min: 8,  max: 8  },
+    { label: 'Noruega',                  code: '+47',  min: 8,  max: 8  },
+    { label: 'Nueva Zelanda',            code: '+64',  min: 8,  max: 9  },
+    { label: 'Omán',                     code: '+968', min: 8,  max: 8  },
+    { label: 'Países Bajos',             code: '+31',  min: 9,  max: 9  },
+    { label: 'Pakistán',                 code: '+92',  min: 10, max: 10 },
+    { label: 'Panamá',                   code: '+507', min: 8,  max: 8  },
+    { label: 'Paraguay',                 code: '+595', min: 9,  max: 9  },
+    { label: 'Perú',                     code: '+51',  min: 9,  max: 9  },
+    { label: 'Polonia',                  code: '+48',  min: 9,  max: 9  },
+    { label: 'Portugal',                 code: '+351', min: 9,  max: 9  },
+    { label: 'Puerto Rico',              code: '+1',   min: 10, max: 10 },
+    { label: 'Qatar',                    code: '+974', min: 8,  max: 8  },
+    { label: 'Reino Unido',              code: '+44',  min: 9,  max: 10 },
+    { label: 'República Checa',          code: '+420', min: 9,  max: 9  },
+    { label: 'República Dominicana',     code: '+1',   min: 10, max: 10 },
+    { label: 'Rumanía',                  code: '+40',  min: 9,  max: 9  },
+    { label: 'Rusia',                    code: '+7',   min: 10, max: 10 },
+    { label: 'Serbia',                   code: '+381', min: 8,  max: 9  },
+    { label: 'Singapur',                 code: '+65',  min: 8,  max: 8  },
+    { label: 'Siria',                    code: '+963', min: 9,  max: 9  },
+    { label: 'Sri Lanka',                code: '+94',  min: 9,  max: 9  },
+    { label: 'Sudáfrica',                code: '+27',  min: 9,  max: 9  },
+    { label: 'Suecia',                   code: '+46',  min: 7,  max: 9  },
+    { label: 'Suiza',                    code: '+41',  min: 9,  max: 9  },
+    { label: 'Tailandia',                code: '+66',  min: 9,  max: 9  },
+    { label: 'Taiwán',                   code: '+886', min: 9,  max: 9  },
+    { label: 'Tanzania',                 code: '+255', min: 9,  max: 9  },
+    { label: 'Túnez',                    code: '+216', min: 8,  max: 8  },
+    { label: 'Turquía',                  code: '+90',  min: 10, max: 10 },
+    { label: 'Ucrania',                  code: '+380', min: 9,  max: 9  },
+    { label: 'Uganda',                   code: '+256', min: 9,  max: 9  },
+    { label: 'Uruguay',                  code: '+598', min: 8,  max: 9  },
+    { label: 'Uzbekistán',               code: '+998', min: 9,  max: 9  },
+    { label: 'Venezuela',                code: '+58',  min: 10, max: 11 },
+    { label: 'Vietnam',                  code: '+84',  min: 9,  max: 10 },
+    { label: 'Yemen',                    code: '+967', min: 9,  max: 9  },
+    { label: 'Zimbabue',                 code: '+263', min: 9,  max: 9  },
+  ];
+
+  // Poblar el select de prefijos
+  const phonePrefixSel = document.getElementById('phone-prefix');
+  PHONE_DATA.forEach((p, i) => {
+    const opt = document.createElement('option');
+    opt.value = String(i);
+    opt.textContent = p.label + ' (' + p.code + ')';
+    if (i === 0) opt.selected = true;
+    phonePrefixSel.appendChild(opt);
+  });
+
+  // Validación en tiempo real
+  const emailEl    = document.getElementById('email');
+  const emailError = document.getElementById('email-error');
+  const phoneEl    = document.getElementById('telefono');
+  const phoneError = document.getElementById('telefono-error');
+  const emailRx    = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  emailEl.addEventListener('blur', () => {
+    if (emailEl.value.trim() && !emailRx.test(emailEl.value.trim())) {
+      emailError.classList.remove('hidden');
+    } else {
+      emailError.classList.add('hidden');
+    }
+  });
+
+  function validatePhoneInline() {
+    const digits = phoneEl.value.replace(/\D/g, '');
+    if (!digits) { phoneError.classList.add('hidden'); return; }
+    const entry = PHONE_DATA[Number(phonePrefixSel.value)];
+    if (entry && (digits.length < entry.min || digits.length > entry.max)) {
+      const rangeTxt = entry.min === entry.max ? entry.min + ' dígitos' : entry.min + '–' + entry.max + ' dígitos';
+      phoneError.textContent = 'Se esperan ' + rangeTxt + ' para ' + entry.label;
+      phoneError.classList.remove('hidden');
+    } else {
+      phoneError.classList.add('hidden');
+    }
+  }
+
+  phoneEl.addEventListener('blur', validatePhoneInline);
+  phonePrefixSel.addEventListener('change', () => { if (phoneEl.value) validatePhoneInline(); });
+
   function validateStep1() {
-    const required = [
+    // Campos de texto obligatorios básicos
+    const basicReq = [
       form.querySelector('#nombre-restaurante'),
       form.querySelector('#persona-contacto'),
-      form.querySelector('#telefono'),
-      form.querySelector('#email'),
     ];
-    for (const el of required) {
+    for (const el of basicReq) {
       if (!el.value.trim()) {
         el.focus();
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         const errEl = document.getElementById('step-1-error');
-        if (errEl) {
-          errEl.classList.remove('hidden');
-          setTimeout(() => errEl.classList.add('hidden'), 4000);
-        }
+        if (errEl) { errEl.classList.remove('hidden'); setTimeout(() => errEl.classList.add('hidden'), 4000); }
         return false;
       }
     }
+
+    // Validación de email
+    if (!emailEl.value.trim() || !emailRx.test(emailEl.value.trim())) {
+      emailError.classList.remove('hidden');
+      emailEl.focus();
+      emailEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+    emailError.classList.add('hidden');
+
+    // Validación de teléfono
+    const digits = phoneEl.value.replace(/\D/g, '');
+    const entry  = PHONE_DATA[Number(phonePrefixSel.value)];
+    const minD   = entry ? entry.min : 6;
+    const maxD   = entry ? entry.max : 15;
+    if (!digits || digits.length < minD || digits.length > maxD) {
+      const rangeTxt = (entry && minD === maxD) ? minD + ' dígitos' : minD + '–' + maxD + ' dígitos';
+      phoneError.textContent = digits ? 'Se esperan ' + rangeTxt + ' para ' + (entry ? entry.label : 'este prefijo') : 'Introduce un número de teléfono';
+      phoneError.classList.remove('hidden');
+      phoneEl.focus();
+      phoneEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+    phoneError.classList.add('hidden');
+
     return true;
   }
 
@@ -130,20 +316,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const DEMO_DISHES = [
     [
-      { name: 'Croquetas de jamón',   desc: 'Bechamel, jamón ibérico',    price: '8,50 €'  },
-      { name: 'Ensalada César',       desc: 'Romana, pollo, parmesano',  price: '11,00 €' },
-      { name: 'Carpaccio de ternera', desc: 'Rúcula, alcaparras, limón', price: '14,00 €' },
-      { name: 'Burrata con tomate',   desc: 'Tomate cherry, albahaca',   price: '13,50 €' },
+      { name: 'Croquetas de jamón',   price: '8,50 €',  photo: 'Emplatados/hf_20260610_183612_f3714119-a683-4832-8ddc-e4bdc7988670.png', badges: [] },
+      { name: 'Ensalada César',       price: '11,00 €', photo: 'Emplatados/hf_20260611_121331_3c1a776a-3c08-4f8b-b59e-63ef9a496be7.png', badges: ['veg'] },
+      { name: 'Carpaccio de ternera', price: '14,00 €', photo: 'Emplatados/hf_20260611_121344_9d1043b0-6367-4bfc-b071-b2d1c713b13d.png', badges: ['sg'] },
     ],
     [
-      { name: 'Solomillo a la brasa', desc: 'Salsa de trufa, patatas',   price: '26,00 €' },
-      { name: 'Merluza a la vasca',   desc: 'Salsa verde, almejas',      price: '22,00 €' },
-      { name: 'Risotto de boletus',   desc: 'Parmesano, trufa negra',    price: '19,00 €' },
+      { name: 'Solomillo a la brasa', price: '26,00 €', photo: 'Emplatados/hf_20260611_122104_14ecd42c-a8b3-44e2-90c0-aa246a21c7b5.png', badges: ['sg'] },
+      { name: 'Merluza a la vasca',   price: '22,00 €', photo: 'Emplatados/hf_20260611_122109_9a9f72d0-abb6-4633-a54a-482726bd3146.png', badges: ['hal'] },
+      { name: 'Risotto de boletus',   price: '19,00 €', photo: 'Emplatados/hf_20260610_183621_caef8043-6523-45aa-b49f-0c8969bde684.png', badges: ['veg'] },
     ],
     [
-      { name: 'Tarta de queso vasca', desc: 'Mousse, frutos rojos',      price: '7,00 €'  },
-      { name: 'Coulant de chocolate', desc: 'Corazón fundente, helado',  price: '7,50 €'  },
-      { name: 'Crème brûlée',        desc: 'Vainilla de Madagascar',    price: '6,50 €'  },
+      { name: 'Tarta de queso vasca', price: '7,00 €',  photo: 'Emplatados/hf_20260611_121548_ed270bba-5bde-4729-a3f8-a6be768ac7db.png', badges: ['sg'] },
+      { name: 'Coulant de chocolate', price: '7,50 €',  photo: 'Emplatados/hf_20260611_121554_ebf7beed-cf1e-450e-be5e-7d84824d6243.png', badges: [] },
+      { name: 'Crème brûlée',        price: '6,50 €',  photo: 'Emplatados/hf_20260611_153257_997c75ca-2785-4ff3-a91d-6878539e4444.png', badges: ['veg'] },
     ],
   ];
 
@@ -170,23 +355,31 @@ document.addEventListener('DOMContentLoaded', () => {
     DEMO_DISHES[catIdx].forEach(d => {
       const el = document.createElement('div');
       el.className = 'demo-dish';
+      const badgesHtml = d.badges.map(b =>
+        '<span class="demo-dish-badge demo-dish-badge--' + b + '">' + b.toUpperCase() + '</span>'
+      ).join('');
       el.innerHTML =
-        '<div class="demo-dish-head">' +
-          '<span class="demo-dish-name">' + d.name + '</span>' +
-          '<span class="demo-dish-price">' + d.price + '</span>' +
+        '<div class="demo-dish-photo" style="background-image:url(\'' + d.photo + '\')">' +
+          '<div class="demo-dish-badges">' + badgesHtml + '</div>' +
+          '<div class="demo-dish-foot">' +
+            '<span class="demo-dish-name">' + d.name + '</span>' +
+            '<span class="demo-dish-price">' + d.price + '</span>' +
+          '</div>' +
         '</div>' +
-        '<div class="demo-dish-desc">' + d.desc + '</div>';
+        '<span class="demo-dish-link">Ver detalle →</span>';
       demoDishesEl.appendChild(el);
     });
   }
 
   // Category tabs
+  const demoSectionTitle = document.getElementById('demo-section-title');
   DEMO_CATS.forEach((cat, i) => {
     const el = document.createElement('div');
     el.className = 'demo-cat' + (i === 0 ? ' demo-cat--active' : '');
     el.textContent = cat;
     el.addEventListener('click', () => {
       demoCatsEl.querySelectorAll('.demo-cat').forEach((c, j) => c.classList.toggle('demo-cat--active', j === i));
+      if (demoSectionTitle) demoSectionTitle.textContent = cat;
       renderDemoDishes(i);
     });
     demoCatsEl.appendChild(el);
@@ -201,13 +394,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorDiv = document.createElement('div');
     colorDiv.className = 'swatch-color';
     colorDiv.style.background = 'linear-gradient(135deg, ' + t.bg + ' 45%, ' + t.acc + ' 100%)';
-
-    const nameSpan = document.createElement('span');
-    nameSpan.className = 'swatch-name';
-    nameSpan.textContent = t.label;
+    colorDiv.title = t.label;
 
     btn.appendChild(colorDiv);
-    btn.appendChild(nameSpan);
     btn.addEventListener('click', () => {
       swatchGrid.querySelectorAll('.swatch-btn').forEach((b, j) => b.classList.toggle('is-selected', j === i));
       applyTema(i);

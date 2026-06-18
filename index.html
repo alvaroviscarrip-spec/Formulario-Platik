@@ -112,11 +112,16 @@
               </div>
               <div class="field">
                 <label for="telefono">Teléfono *</label>
-                <input type="tel" id="telefono" name="Teléfono" required>
+                <div class="phone-input-wrap">
+                  <select id="phone-prefix" name="Prefijo telefónico" class="phone-prefix-select" aria-label="Prefijo de país"></select>
+                  <input type="tel" id="telefono" name="Número de teléfono" placeholder="000 000 000" required>
+                </div>
+                <p class="field-error hidden" id="telefono-error">Número no válido para este prefijo</p>
               </div>
               <div class="field">
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="Email" required>
+                <p class="field-error hidden" id="email-error">Introduce un email válido (ej. nombre@dominio.com)</p>
               </div>
               <div class="field">
                 <label for="web">Página web</label>
@@ -197,12 +202,13 @@
                           <span>9:41</span>
                           <span class="demo-status-icons">▲●▮</span>
                         </div>
-                        <div class="demo-header">
-                          <div class="demo-logo">P</div>
-                          <div class="demo-resto-name">Restaurante</div>
+                        <div class="demo-title">La Taberna</div>
+                        <div class="demo-util">
+                          <span class="demo-util-flags">🇪🇸 € ▽</span>
+                          <span class="demo-util-btn">💬 Camarero</span>
                         </div>
-                        <div class="demo-accent-line" id="demo-accent-line"></div>
                         <div class="demo-cats" id="demo-cats"></div>
+                        <div class="demo-section-title" id="demo-section-title">Entrantes</div>
                         <div class="demo-dishes" id="demo-dishes"></div>
                       </div>
                     </div>

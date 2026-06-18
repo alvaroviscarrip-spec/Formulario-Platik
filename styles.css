@@ -794,7 +794,6 @@ input[type="radio"]:checked {
   padding: 20px 22px 28px;
 }
 
-/* Phone wrap + side buttons */
 .phone-wrap {
   flex: 0 0 auto;
   position: relative;
@@ -806,7 +805,7 @@ input[type="radio"]:checked {
   content: '';
   position: absolute;
   left: -4px;
-  top: 84px;
+  top: 86px;
   width: 4px;
   height: 22px;
   background: #2a2a2e;
@@ -818,16 +817,15 @@ input[type="radio"]:checked {
   content: '';
   position: absolute;
   right: -4px;
-  top: 98px;
+  top: 100px;
   width: 4px;
   height: 46px;
   background: #2a2a2e;
   border-radius: 0 2px 2px 0;
 }
 
-/* Phone frame */
 .phone-frame {
-  width: 210px;
+  width: 240px;
   background: #1a1a1e;
   border-radius: 40px;
   border: 9px solid #1a1a1e;
@@ -851,7 +849,7 @@ input[type="radio"]:checked {
 }
 
 .phone-island {
-  width: 86px;
+  width: 98px;
   height: 24px;
   background: #050505;
   border-radius: 13px;
@@ -864,13 +862,12 @@ input[type="radio"]:checked {
   flex: 1;
 }
 
-/* Demo menu inside phone */
 .demo-menu {
   --dm-bg:   #080808;
   --dm-acc:  #f5f5f5;
   --dm-text: #f5f5f5;
   position: relative;
-  height: 380px;
+  height: 420px;
   overflow: hidden;
   background: var(--dm-bg);
 }
@@ -912,49 +909,47 @@ input[type="radio"]:checked {
   letter-spacing: 0.12em;
 }
 
-.demo-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  padding: 10px 0 8px;
+.demo-title {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--dm-acc);
+  padding: 6px 12px 5px;
+  line-height: 1.2;
 }
 
-.demo-logo {
-  width: 30px;
-  height: 30px;
-  border-radius: 7px;
-  background: var(--dm-acc);
-  color: var(--dm-bg);
+.demo-util {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-weight: 700;
-  flex-shrink: 0;
+  padding: 3px 10px 7px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.18);
 }
 
-.demo-resto-name {
-  font-family: 'Cinzel', serif;
-  font-size: 7.5px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.demo-util-flags {
+  font-size: 7px;
   color: var(--dm-text);
+  opacity: 0.7;
+  letter-spacing: 0.1em;
 }
 
-.demo-accent-line {
-  height: 1px;
-  margin: 0 18px 8px;
+.demo-util-btn {
+  font-size: 5.5px;
+  font-weight: 700;
+  color: var(--dm-bg);
   background: var(--dm-acc);
-  opacity: 0.5;
+  padding: 3px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .demo-cats {
   display: flex;
-  gap: 4px;
-  padding: 0 10px 8px;
+  gap: 5px;
+  padding: 8px 10px 4px;
   overflow-x: hidden;
 }
 
@@ -962,14 +957,15 @@ input[type="radio"]:checked {
   font-family: var(--heading);
   font-size: 6px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 4px 9px;
+  padding: 3px 9px;
   border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.35);
   color: var(--dm-text);
-  opacity: 0.45;
+  opacity: 0.6;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s, opacity 0.3s;
+  transition: background 0.28s, border-color 0.28s, opacity 0.28s, color 0.28s;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -977,41 +973,80 @@ input[type="radio"]:checked {
 .demo-cat--active {
   background: var(--dm-acc);
   color: var(--dm-bg);
+  border-color: var(--dm-acc);
   opacity: 1;
 }
 
+.demo-section-title {
+  text-align: center;
+  font-family: var(--heading);
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--dm-text);
+  padding: 4px 10px 5px;
+  letter-spacing: 0.06em;
+}
+
 .demo-dishes {
-  padding: 0 10px 14px;
+  padding: 0 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .demo-dish {
-  background: rgba(128, 128, 128, 0.1);
-  border: 1px solid rgba(128, 128, 128, 0.08);
-  border-radius: 6px;
-  padding: 7px 9px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.demo-dish-head {
+.demo-dish-photo {
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.demo-dish-badges {
+  display: flex;
+  gap: 3px;
+  justify-content: flex-end;
+  padding: 4px 5px 0;
+}
+
+.demo-dish-badge {
+  font-size: 4.5px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.demo-dish-badge--sg  { background: #f39c12; color: #fff; }
+.demo-dish-badge--hal { background: #2ecc71; color: #fff; }
+.demo-dish-badge--veg { background: #27ae60; color: #fff; }
+
+.demo-dish-foot {
+  padding: 4px 8px 7px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, transparent 100%);
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 6px;
+  align-items: flex-end;
+  gap: 4px;
 }
 
 .demo-dish-name {
   font-family: var(--heading);
   font-size: 7px;
   font-weight: 700;
-  color: var(--dm-text);
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
   flex: 1;
   min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: 0.04em;
 }
 
 .demo-dish-price {
@@ -1022,14 +1057,12 @@ input[type="radio"]:checked {
   flex-shrink: 0;
 }
 
-.demo-dish-desc {
+.demo-dish-link {
   font-size: 5.5px;
   color: var(--dm-text);
-  opacity: 0.5;
-  margin-top: 3px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  opacity: 0.4;
+  padding: 3px 8px 4px;
+  display: block;
 }
 
 .phone-chin {
@@ -1047,7 +1080,6 @@ input[type="radio"]:checked {
   border-radius: 3px;
 }
 
-/* Design controls (right side) */
 .design-controls {
   flex: 1;
   display: flex;
@@ -1074,19 +1106,15 @@ input[type="radio"]:checked {
   margin: 0;
 }
 
-/* Color swatches */
 .swatch-grid {
   display: grid;
-  grid-template-columns: repeat(3, 80px);
-  gap: 10px;
+  grid-template-columns: repeat(3, 60px);
+  gap: 8px;
 }
 
 .swatch-btn {
-  width: 80px;
+  width: 60px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
   cursor: pointer;
   border: none;
   background: transparent;
@@ -1094,8 +1122,8 @@ input[type="radio"]:checked {
 }
 
 .swatch-color {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
   border: 2.5px solid transparent;
   transition: border-color 0.22s, transform 0.15s, box-shadow 0.22s;
@@ -1119,26 +1147,6 @@ input[type="radio"]:checked {
   box-shadow: 0 0 0 1px var(--neon), 0 0 14px rgba(0, 210, 255, 0.45);
 }
 
-.swatch-name {
-  font-family: var(--heading);
-  font-size: 0.52rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 80px;
-  transition: color 0.22s;
-}
-
-.swatch-btn.is-selected .swatch-name {
-  color: var(--neon);
-}
-
-/* Fondo thumbnails */
 .fondo-thumb-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1197,6 +1205,72 @@ input[type="radio"]:checked {
   box-shadow: 0 0 0 1px var(--neon), 0 0 12px rgba(0, 210, 255, 0.35);
 }
 
+/* Phone field: prefix + number */
+.phone-input-wrap {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(5, 11, 24, 0.65);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.phone-input-wrap:focus-within {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 3px var(--neon-soft), 0 0 18px rgba(0, 210, 255, 0.1);
+}
+
+.phone-input-wrap .phone-prefix-select {
+  flex-shrink: 0;
+  width: 152px;
+  border: none !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+  background: rgba(5, 11, 24, 0.9) !important;
+  box-shadow: none !important;
+  padding: 10px 28px 10px 12px !important;
+  font-size: 0.82rem !important;
+  color: var(--text) !important;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%235e7099' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+}
+
+.phone-input-wrap .phone-prefix-select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: var(--border) !important;
+}
+
+.phone-input-wrap input[type="tel"] {
+  flex: 1;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 10px 14px !important;
+  min-width: 0;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.phone-input-wrap input[type="tel"]:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.field-error {
+  font-size: 0.76rem;
+  color: #ff6b8a;
+  margin: 5px 0 0;
+  line-height: 1.4;
+}
+
 @media (max-width: 700px) {
   .design-studio {
     flex-direction: column;
@@ -1219,11 +1293,9 @@ input[type="radio"]:checked {
   .swatch-btn {
     width: 100%;
   }
-
-  .swatch-name {
-    width: 100%;
-  }
 }
+
+
 
 /* ── Emplatado gallery (section 05) ── */
 .emplatado-grid {
