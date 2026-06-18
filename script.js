@@ -47,6 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 260);
   }
 
+  // --- Portada → formulario ---
+  document.getElementById('btn-start').addEventListener('click', () => {
+    const portada = document.getElementById('portada');
+    portada.classList.add('portada-exiting');
+    setTimeout(() => {
+      portada.classList.add('hidden');
+      document.getElementById('progress-wrap').classList.remove('hidden');
+      document.getElementById('platik-form').classList.remove('hidden');
+      updateStepProgress(1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 380);
+  });
+
   function validateStep1() {
     const required = [
       form.querySelector('#nombre-restaurante'),

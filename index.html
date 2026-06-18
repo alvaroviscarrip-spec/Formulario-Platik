@@ -21,7 +21,33 @@
     </header>
 
     <main>
-      <div class="progress-wrap" id="progress-wrap">
+
+      <!-- ══════════════════════════════════════
+           PORTADA
+           ══════════════════════════════════════ -->
+      <div class="portada" id="portada">
+        <div class="portada-body">
+          <h2 class="portada-heading">Personaliza tu carta,<br>a tu imagen.</h2>
+          <div class="portada-rule"></div>
+          <p class="portada-desc">
+            Completa este formulario para que nuestro equipo configure tu carta digital exactamente
+            como la imaginas: idiomas, moneda, temática visual, perfiles dietéticos, estructura de platos y mucho más.
+          </p>
+          <div class="portada-meta">
+            <span class="portada-meta-item"><span class="portada-meta-num">8</span> pasos</span>
+            <span class="portada-meta-dot">·</span>
+            <span class="portada-meta-item"><span class="portada-meta-num">10–15</span> min</span>
+            <span class="portada-meta-dot">·</span>
+            <span class="portada-meta-item"><span class="portada-meta-num">100%</span> personalizado</span>
+          </div>
+          <p class="portada-note">Los campos marcados con * son obligatorios. El resto puedes dejarlo en blanco si no aplica.</p>
+          <button type="button" class="btn-start" id="btn-start">
+            Comenzar configuración <span class="btn-start-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="progress-wrap hidden" id="progress-wrap">
         <div class="progress-header">
           <span class="progress-title">Tu progreso</span>
           <span class="progress-step" id="progress-step">Paso 1 de 8</span>
@@ -47,17 +73,7 @@
         </div>
       </div>
 
-      <section class="intro">
-        <h2>Formulario de personalización de tu carta digital</h2>
-        <p>
-          ¡Bienvenido/a a Platik! Este formulario nos permite configurar tu carta digital exactamente
-          como la quieres: idiomas, moneda, temática visual, alérgenos, estructura de categorías y mucho más.
-          Tardarás unos 10–15 minutos en completarlo.
-        </p>
-        <p class="intro-note">Los campos marcados con * son obligatorios. El resto, si no aplica a tu restaurante, puedes dejarlo en blanco.</p>
-      </section>
-
-      <form id="platik-form" action="https://formsubmit.co/contacto@platik.es" method="POST" novalidate enctype="multipart/form-data">
+      <form id="platik-form" class="hidden" action="https://formsubmit.co/contacto@platik.es" method="POST" novalidate enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="Nueva personalización de carta — Platik">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
