@@ -752,7 +752,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Envío del formulario (POST nativo — FormSubmit redirige a _next) ---
   form.addEventListener('submit', (event) => {
     const nombreRestaurante = form.querySelector('#nombre-restaurante').value.trim();
-    form.querySelector('input[name="_subject"]').value = nombreRestaurante
+    form.querySelector('input[name="subject"]').value = nombreRestaurante
       ? `Nueva personalización de carta — ${nombreRestaurante}`
       : 'Nueva personalización de carta — Platik';
     submitBtn.disabled = true;

@@ -61,14 +61,11 @@
         </div>
       </div>
 
-      <form id="platik-form" class="hidden" action="https://formsubmit.co/contacto@platik.es" method="POST" novalidate enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="Nueva personalización de carta — Platik">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://formulario.platik.es/?enviado=1">
-        <div style="position:absolute; left:-9999px;" aria-hidden="true">
-          <label>No rellenar este campo: <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
-        </div>
+      <form id="platik-form" class="hidden" action="https://api.web3forms.com/submit" method="POST" novalidate enctype="multipart/form-data">
+        <input type="hidden" name="access_key" value="43d44ba3-8c54-4fb5-90d8-509637fdcd27">
+        <input type="hidden" name="subject" value="Nueva personalización de carta — Platik">
+        <input type="hidden" name="redirect" value="https://formulario.platik.es/?enviado=1">
+        <input type="checkbox" name="botcheck" style="display:none" aria-hidden="true">
 
         <!-- ══════════════════════════════════════
              PASO 1 — Datos del restaurante
