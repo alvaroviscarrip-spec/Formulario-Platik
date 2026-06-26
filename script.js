@@ -284,15 +284,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Design Studio (Step 2) ---
   const TEMAS = [
-    { value: '01 · Negro & Blanco',   label: 'Negro & Blanco',   bg: '#080808', acc: '#f5f5f5', text: '#f5f5f5' },
-    { value: '02 · Blanco & Negro',   label: 'Blanco & Negro',   bg: '#f4f1ea', acc: '#111111', text: '#111111' },
-    { value: '03 · Marino & Naranja', label: 'Marino & Naranja', bg: '#0c1a28', acc: '#e06028', text: '#eee8d8' },
-    { value: '04 · Vino Tinto',       label: 'Vino Tinto',       bg: '#1c0810', acc: '#b81830', text: '#f0e4d4' },
-    { value: '05 · Marfil & Vino',    label: 'Marfil & Vino',    bg: '#f4f0e4', acc: '#881830', text: '#280e18' },
-    { value: '06 · Verde Oliva',      label: 'Verde Oliva',      bg: '#111808', acc: '#688030', text: '#dce8c4' },
-    { value: '07 · Marino & Dorado',  label: 'Marino & Dorado',  bg: '#091428', acc: '#c09838', text: '#e4d8c0' },
-    { value: '08 · Negro & Dorado',   label: 'Negro & Dorado',   bg: '#080808', acc: '#c09838', text: '#ece0c8' },
-    { value: '09 · Oliva & Dorado',   label: 'Oliva & Dorado',   bg: '#111808', acc: '#c09838', text: '#e4ecc8' },
+    {
+      value: 'Original Oscuro',    label: 'Original Oscuro',
+      bg: '#030712',   title: '#ffffff',   text: 'rgba(255,255,255,0.70)',
+      btnBg: '#f97316',            btnText: '#ffffff',
+      tabBg: 'rgba(255,255,255,0.15)', tabText: '#ffffff',
+      tabInactive: 'rgba(255,255,255,0.45)',
+      price: '#fdba74',
+    },
+    {
+      value: 'Granate Sólido',     label: 'Granate Sólido',
+      bg: '#6B1A1A',   title: '#ffffff',   text: 'rgba(255,255,255,0.80)',
+      btnBg: '#ffffff',            btnText: '#6B1A1A',
+      tabBg: '#ffffff',            tabText: '#6B1A1A',
+      tabInactive: 'rgba(255,255,255,0.70)',
+      price: '#B8860B',
+    },
+    {
+      value: 'Granate Claro',      label: 'Granate Claro',
+      bg: '#F5EDE0',   title: '#7A1A1A',   text: 'rgba(122,26,26,0.70)',
+      btnBg: '#8B2020',            btnText: '#ffffff',
+      tabBg: '#8B2020',            tabText: '#ffffff',
+      tabInactive: '#8B2020',
+      price: '#B8860B',
+    },
+    {
+      value: 'Verde Bosque',       label: 'Verde Bosque',
+      bg: '#1A3A1A',   title: '#ffffff',   text: 'rgba(255,255,255,0.75)',
+      btnBg: '#ffffff',            btnText: '#1A3A1A',
+      tabBg: '#ffffff',            tabText: '#1A3A1A',
+      tabInactive: 'rgba(255,255,255,0.70)',
+      price: '#C8A355',
+    },
+    {
+      value: 'Azul Noche Dorado',  label: 'Azul Noche Dorado',
+      bg: '#1B2A4A',   title: '#D4A830',   text: 'rgba(176,196,216,0.85)',
+      btnBg: '#D4A830',            btnText: '#1B2A4A',
+      tabBg: '#D4A830',            tabText: '#1B2A4A',
+      tabInactive: 'rgba(212,168,48,0.60)',
+      price: '#D4A830',
+    },
+    {
+      value: 'Negro Dorado',       label: 'Negro Dorado',
+      bg: '#0A0A0A',   title: '#C8A355',   text: 'rgba(200,163,85,0.80)',
+      btnBg: '#C8A355',            btnText: '#0A0A0A',
+      tabBg: '#C8A355',            tabText: '#0A0A0A',
+      tabInactive: 'rgba(200,163,85,0.75)',
+      price: '#C8A355',
+    },
+    {
+      value: 'Blanco y Negro',     label: 'Blanco y Negro',
+      bg: '#000000',   title: '#ffffff',   text: 'rgba(255,255,255,0.75)',
+      btnBg: '#ffffff',            btnText: '#000000',
+      tabBg: '#ffffff',            tabText: '#000000',
+      tabInactive: 'rgba(255,255,255,0.65)',
+      price: '#E5E5E5',
+    },
+    {
+      value: 'Negro y Blanco',     label: 'Negro y Blanco',
+      bg: '#FFFFFF',   title: '#000000',   text: 'rgba(0,0,0,0.75)',
+      btnBg: '#000000',            btnText: '#ffffff',
+      tabBg: '#000000',            tabText: '#ffffff',
+      tabInactive: 'rgba(0,0,0,0.65)',
+      price: '#E5E5E5',
+    },
+    {
+      value: 'Verde Oliva Dorado', label: 'Verde Oliva Dorado',
+      bg: '#2C3E1A',   title: '#C8A355',   text: 'rgba(255,255,255,0.75)',
+      btnBg: '#C8A355',            btnText: '#2C3E1A',
+      tabBg: '#C8A355',            tabText: '#2C3E1A',
+      tabInactive: 'rgba(200,163,85,0.75)',
+      price: '#C8A355',
+    },
   ];
 
   const FONDOS = [
@@ -337,9 +400,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function applyTema(idx) {
     const t = TEMAS[idx];
-    demoMenu.style.setProperty('--dm-bg',   t.bg);
-    demoMenu.style.setProperty('--dm-acc',  t.acc);
-    demoMenu.style.setProperty('--dm-text', t.text);
+    demoMenu.style.setProperty('--dm-bg',              t.bg);
+    demoMenu.style.setProperty('--dm-title',           t.title);
+    demoMenu.style.setProperty('--dm-text',            t.text);
+    demoMenu.style.setProperty('--dm-btn-bg',          t.btnBg);
+    demoMenu.style.setProperty('--dm-btn-text',        t.btnText);
+    demoMenu.style.setProperty('--dm-tab-active-bg',   t.tabBg);
+    demoMenu.style.setProperty('--dm-tab-active-text', t.tabText);
+    demoMenu.style.setProperty('--dm-tab-inactive',    t.tabInactive);
+    demoMenu.style.setProperty('--dm-price',           t.price);
     demoMenu.style.background = t.bg;
     temaHidden.value = t.value;
   }
@@ -387,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const colorDiv = document.createElement('div');
     colorDiv.className = 'swatch-color';
-    colorDiv.style.background = 'linear-gradient(135deg, ' + t.bg + ' 45%, ' + t.acc + ' 100%)';
+    colorDiv.style.background = 'linear-gradient(135deg, ' + t.bg + ' 45%, ' + t.btnBg + ' 100%)';
     colorDiv.title = t.label;
 
     btn.appendChild(colorDiv);
