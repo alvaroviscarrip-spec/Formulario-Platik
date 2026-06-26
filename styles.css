@@ -1824,7 +1824,7 @@ input[type="radio"]:checked {
 }
 
 /* ── File input ── */
-.upload-field { margin-bottom: 4px; }
+.upload-field { margin-bottom: 22px; }
 
 input[type="file"] {
   font-family: var(--sans);
@@ -1866,7 +1866,7 @@ input[type="file"]::file-selector-button:hover {
   border: 1px solid rgba(0, 229, 160, 0.18);
   border-radius: 7px;
   padding: 12px 14px;
-  margin-bottom: 14px;
+  margin-bottom: 22px;
 }
 
 .emplatado-auto-icon {

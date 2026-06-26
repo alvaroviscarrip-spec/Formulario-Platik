@@ -623,6 +623,8 @@ document.addEventListener('DOMContentLoaded', () => {
     section05.classList.remove('emplatados-selectable');
     cartaFileInput.disabled = false;
     orderData.disabled = false;
+    catalogoToggle.classList.add('hidden');
+    closeCatalogo();
   }
 
   function activatePlatoMode() {
@@ -636,6 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeCatalogo();
     cartaFileInput.disabled = true;
     orderData.disabled = true;
+    catalogoToggle.classList.remove('hidden');
   }
 
   avanzadaCheck && avanzadaCheck.addEventListener('change', () => {
@@ -643,12 +646,14 @@ document.addEventListener('DOMContentLoaded', () => {
       otraSection.style.display = '';
       section05.classList.add('emplatados-selectable');
       avanzadaNotice.classList.remove('hidden');
+      catalogoToggle.classList.remove('hidden');
       openCatalogo();
     } else {
       otraSection.style.display = 'none';
       section05.classList.remove('emplatados-selectable');
       avanzadaNotice.classList.add('hidden');
       clearEmplatadoSels();
+      catalogoToggle.classList.add('hidden');
       closeCatalogo();
     }
   });
